@@ -9,7 +9,7 @@ import java.util.List;
 public class HotelchainService {
     public List<Hotelchain> getHotelchain() throws Exception{
         // sql query
-        String sql = "SELECT * FROM HotelChain.hotelchain";
+        String sql = "SELECT * FROM 'HotelChain'.hotelchain";
         // connection object
         ConnectionDB db = new ConnectionDB();
 
