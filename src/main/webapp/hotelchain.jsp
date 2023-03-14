@@ -42,7 +42,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title> Students Page </title>
+    <title> Hotel Chain List </title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="assets/css/styles.css">
@@ -50,11 +50,10 @@
 </head>
 
 <body>
-
+<!--
     <div id="editModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
 
-            <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title">Edit Student</h4>
@@ -78,7 +77,7 @@
 
         </div>
     </div>
-
+-->
     <jsp:include page="navbar.jsp"/>
 
     <input type="hidden" name="message" id="message" value='<%=msgField%>' >
@@ -112,6 +111,7 @@
                                     <td><%= hotelchain.getEmail() %></td>
                                     <td><%= hotelchain.getPhoneno() %></td>
                                     <td>
+                                        <!--
                                         <a type="button" onclick="setModalFields(this)"
                                            data-toggle="modal" data-name="<%= hotelchain.getName() %>"
                                            data-totalhotels="<%= hotelchain.getTotalHotels() %>" data-address="<%= hotelchain.getAddress() %>"
@@ -119,6 +119,7 @@
                                            data-target="#editModal">
                                             <i class="fa fa-edit"></i>
                                         </a>
+                                        -->
                                     </td>
                                 </tr>
                                 <% } %>
