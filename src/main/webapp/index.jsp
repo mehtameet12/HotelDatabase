@@ -20,7 +20,7 @@
                     <div class="card-body" id="card">
                         <h4 class="card-title">View Different Hotels</h4>
                         <p class="card-text" id="paragraph">Select from the list of five hotels</p>
-                        <a class="btn btn-primary" id="show-btn" href="students.jsp">Show</a>
+                        <a class="btn btn-primary" id="show-btn" href="hotelchain.jsp">Show</a>
                     </div>
                 </div>
             </div>

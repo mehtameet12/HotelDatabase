@@ -6,8 +6,6 @@ package com.Hotels;
 
 public class Hotelchain {
 
-    private Integer id;
-    private String surname;
     private String name;
     private Integer totalhotels;
     private String address;
