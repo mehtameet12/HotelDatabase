@@ -1,20 +1,20 @@
 package com.Hotels;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HotelchainService {
-    public List<Hotelchain> getHotelchain() throws Exception{
+public class HotelService {
+
+    public List<Hotel> getHotel() throws Exception{
         // sql query
-        String sql = "SELECT * FROM hotelchainschema.hotelchain";
+        String sql = "SELECT * FROM hotelchainschema.hotels";
         // connection object
         ConnectionDB db = new ConnectionDB();
 
         // data structure to keep all hotelchains retrieved from database
-        List<Hotelchain> hotelchains = new ArrayList<Hotelchain>();
+        List<Hotel> hotels = new ArrayList<Hotel>();
 
         try (Connection con = db.getConnection()) {
             // prepare statement
@@ -25,34 +25,34 @@ public class HotelchainService {
 
             // iterate through the result set
             while (rs.next()) {
-                // create new hoelchain object
-                Hotelchain hotelchain = new Hotelchain(
-                        rs.getString("name"),
-                        rs.getInt("totalhotels"),
+                //create new hotel object
+                Hotel hotel = new Hotel(
+                        rs.getInt("hotelid"),
+                        rs.getInt("category"),
                         rs.getString("address"),
-                        rs.getString("email"),
-                        rs.getString("phoneno")
+                        rs.getInt("totalrooms"),
+                        rs.getString("name")
                 );
 
-                // append hotelchain in hotelchain list
-                hotelchains.add(hotelchain);
+                //append hotels in hotels list
+                hotels.add(hotel);
             }
 
-                // close result set
-                rs.close();
-                // close statement
-                stmt.close();
-                con.close();
-                db.close();
+            // close result set
+            rs.close();
+            // close statement
+            stmt.close();
+            con.close();
+            db.close();
 
-                // return result
-                return hotelchains;
+            // return result
+            return hotels;
         }catch (Exception e) {
-                throw new Exception(e.getMessage());
+            throw new Exception(e.getMessage());
         }
     }
 
-    public String createHotelchain(Hotelchain hotelchain) throws Exception {
+    public String createHotel(Hotel hotel) throws Exception {
         String message = "";
         Connection con = null;
 
@@ -60,7 +60,7 @@ public class HotelchainService {
         ConnectionDB db = new ConnectionDB();
 
         // sql query
-        String insertStudentQuery = "INSERT INTO hotelchain (name, totalhotels, address, email, phoneno) VALUES (?, ?, ?, ?, ?);";
+        String insertStudentQuery = "INSERT INTO hotels (hotelid, category, address, totalrooms, name) VALUES (?, ?, ?, ?, ?);";
 
         // try to connect to database, catch any exceptions
         try {
@@ -70,11 +70,11 @@ public class HotelchainService {
             PreparedStatement stmt = con.prepareStatement(insertStudentQuery);
 
             // set every ? of statement
-            stmt.setString(1, hotelchain.getName());
-            stmt.setInt(2, hotelchain.getTotalHotels());
-            stmt.setString(3, hotelchain.getAddress());
-            stmt.setString(4, hotelchain.getEmail());
-            stmt.setString(5, hotelchain.getPhoneno());
+            stmt.setInt(1, hotel.getHotelid());
+            stmt.setInt(2, hotel.getCategory());
+            stmt.setString(3, hotel.getAddress());
+            stmt.setInt(4, hotel.getTotalrooms());
+            stmt.setString(5, hotel.getName());
 
             // execute the query
             stmt.executeUpdate();
@@ -84,21 +84,21 @@ public class HotelchainService {
             // close the connection
             db.close();
         } catch (Exception e) {
-            message = "Error while inserting Hotel Chain: " + e.getMessage();
+            message = "Error while inserting Hotel: " + e.getMessage();
         }finally {
             if (con != null) // if connection is still open, then close.
                 con.close();
-            if (message.equals("")) message = "Hotel Chain successfully inserted!";
+            if (message.equals("")) message = "Hotel successfully inserted!";
         }
         // return respective message
         return message;
     }
 
-    public String updateHotelchains(Hotelchain hotelchain) throws Exception {
+    public String updateHotel(Hotel hotel) throws Exception {
         Connection con = null;
         String message = "";
         // sql query
-        String sql = "UPDATE hotelchain SET totalhotels=?, address=?, email=?, phoneno=? WHERE name=?;";
+        String sql = "UPDATE hotels SET category=?, address=?, totalrooms=?, name=? WHERE hotelid=?;";
 
         // connection object
         ConnectionDB db = new ConnectionDB();
@@ -112,11 +112,12 @@ public class HotelchainService {
             PreparedStatement stmt = con.prepareStatement(sql);
 
             // set every ? of statement
-            stmt.setInt(1, hotelchain.getTotalHotels());
-            stmt.setString(2, hotelchain.getAddress());
-            stmt.setString(3, hotelchain.getEmail());
-            stmt.setString(4, hotelchain.getPhoneno());
-            stmt.setString(5, hotelchain.getName());
+
+            stmt.setInt(1, hotel.getCategory());
+            stmt.setString(2, hotel.getAddress());
+            stmt.setInt(3, hotel.getTotalrooms());
+            stmt.setString(4, hotel.getName());
+            stmt.setInt(5, hotel.getHotelid());
 
             // execute the query
             stmt.executeUpdate();
@@ -125,15 +126,14 @@ public class HotelchainService {
             stmt.close();
 
         } catch (Exception e) {
-            message = "Error while updating Hotel Chain: " + e.getMessage();
+            message = "Error while updating Hotel: " + e.getMessage();
 
         } finally {
             if (con != null) con.close();
-            if (message.equals("")) message = "Hotel Chain successfully updated!";
+            if (message.equals("")) message = "Hotel successfully updated!";
         }
 
         // return respective message
         return message;
     }
-
 }

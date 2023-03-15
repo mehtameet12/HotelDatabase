@@ -11,21 +11,37 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
 </head>
 
-<body>
+<div>
     <input type="hidden" name="message" id="message" value='' >
     <div class="container" id="row-container">
         <div class="row" id="row">
             <div class="col-md-4">
                 <div class="card" id="card-container-layout">
                     <div class="card-body" id="card">
-                        <h4 class="card-title">View Different Hotels</h4>
-                        <p class="card-text" id="paragraph">Select from the list of five hotels</p>
+                        <h4 class="card-title">View the available Hotel Chains</h4>
+                        <p class="card-text" id="paragraph">Select from the list of five hotel chains</p>
                         <a class="btn btn-primary" id="show-btn" href="hotelchain.jsp">Show</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <input type="hidden" name="message" id="message" value='' >
+    <div class="container" id="row-container">
+        <div class="row" id="row">
+            <div class="col-md-4">
+                <div class="card" id="card-container-layout">
+                    <div class="card-body" id="card">
+                        <h4 class="card-title">View the Hotels</h4>
+                        <p class="card-text" id="paragraph">Select from teh list of hotels</p>
+                        <a class="btn btn-primary" id="show-btn" href="hotelchain.jsp">Show</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
 
 
