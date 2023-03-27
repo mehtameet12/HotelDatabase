@@ -12,7 +12,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Hire me - Brand</title>
+    <title>Book Your Dream Vacation</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700&amp;display=swap">
     <link rel="stylesheet" href="assets/css/pikaday.min.css">
@@ -115,7 +115,8 @@
                                 <option value="5">5</option>
                                 <option value="6">6</option>
                             </optgroup>
-                        </select></div><button class="btn btn-primary btn-lg d-block w-100" type="submit">Search Hotels</button>
+                        </select></div>
+                        <a class="btn btn-primary btn-lg d-block w-100" id="show-btn" href="room.jsp">Search Rooms</a>
                     </form>
                 </div>
             </section>
