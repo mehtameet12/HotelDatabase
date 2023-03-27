@@ -3,6 +3,11 @@
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="com.Hotels.*" %>
+<%@ page import="java.sql.PreparedStatement" %>
+<%@ page import="java.sql.ResultSet" %>
+<%@ page import="java.sql.SQLException" %>
+<%@ page import="java.sql.Connection" %>
+
 
 
 <%
@@ -25,13 +30,26 @@
     session.setAttribute("messages", new ArrayList<Message>());
 
     // get all hotels from database
+
+
+
+    //---------------------------------------
+    // get all available rooms from the database for the current hotel chain and address
+    String sql = "SELECT r.roomid, r.capacity, r.status, r.price, r.roomview, r.extension, r.damages, r.amenities, r.hotelid " +
+            "FROM hotelchainschema.rooms r " +
+            "INNER JOIN hotelchainschema.hotels h ON r.hotelid = h.hotelid " +
+            "INNER JOIN hotelchainschema.hotelchain hc ON h.name = hc.name " +
+            "WHERE r.status = true AND h.address = 'Ottawa' AND hc.name = 'Marriott'";
     RoomService roomsevice = new RoomService();
     List<Room> rooms = null;
     try {
-        rooms = roomsevice.getRoomService();
+        rooms = roomsevice.getRoomService(sql);
     } catch (Exception e) {
         e.printStackTrace();
     }
+    //-----------------------------------
+
+
 %>
 
 <!DOCTYPE html>
@@ -48,34 +66,6 @@
 </head>
 
 <body>
-<!--
-    <div id="editModal" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Edit Student</h4>
-                </div>
-                <div class="modal-body">
-                    <form id="modal-form">
-                        <div style="text-align: center;">
-                            <input type="text" name="name" id="name" readonly></br>
-                            <input type="text" name="totalhotels" id="totalhotels"></br>
-                            <input type="text" name="address" id="address"></br>
-                            <input type="text" name="email" id="email"></br>
-                            <input type="text" name="phoneno" id="phoneno">
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" form="modal-form" class="btn btn-success">Update</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-
-        </div>
-    </div>
--->
     <jsp:include page="navbar.jsp"/>
 
     <input type="hidden" name="message" id="message" value='<%=msgField%>' >

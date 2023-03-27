@@ -7,9 +7,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RoomService {
-    public List<Room> getRoomService() throws Exception{
+    public List<Room> getRoomService(String r) throws Exception{
         // sql query
         String sql = "SELECT * FROM hotelchainschema.rooms";
+        String request = r;
         // connection object
         ConnectionDB db = new ConnectionDB();
 
@@ -18,7 +19,7 @@ public class RoomService {
 
         try (Connection con = db.getConnection()) {
             // prepare statement
-            PreparedStatement stmt = con.prepareStatement(sql);
+            PreparedStatement stmt = con.prepareStatement(request);
 
             // get the results from executing the query
             ResultSet rs = stmt.executeQuery();
