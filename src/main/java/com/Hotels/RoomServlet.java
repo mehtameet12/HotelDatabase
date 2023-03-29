@@ -27,6 +27,15 @@ public class RoomServlet extends HttpServlet {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+
+        RoomService roomService = new RoomService();
+        List<Room> rooms = null;
+        try {
+            rooms = roomService.availableRooms(hotelChainName, hotelAddress);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
     public String getHotelChainName(){
         return hotelChainName;

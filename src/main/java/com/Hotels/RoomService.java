@@ -64,8 +64,6 @@ public class RoomService {
 
     public List<Room> availableRooms (String hotelChainName, String hotelAddress) throws Exception
     {
-//        hotelChainName = request.getParameter("hotelchainname");
-//        hotelAddress = request.getParameter("address");
         // sql query
         String request = "SELECT r.roomid, r.capacity, r.status, r.price, r.roomview, r.extension, r.damages, r.amenities, r.hotelid " +
                 "FROM hotelchainschema.rooms r " +
@@ -73,8 +71,8 @@ public class RoomService {
                 "INNER JOIN hotelchainschema.hotelchain hc ON h.name = hc.name " +
                 "WHERE r.status = true AND h.address = ? AND hc.name = ?";
 
-        System.out.println(hotelAddress);
-        System.out.println(hotelChainName);
+//        System.out.println(hotelAddress);
+//        System.out.println(hotelChainName);
         // connection object
         ConnectionDB db = new ConnectionDB();
 
@@ -92,7 +90,7 @@ public class RoomService {
 
             // iterate through the result set
             while (rs.next()) {
-                // create new hoelchain object
+                // create new hotelchain object
                 Room room = new Room(
                         rs.getInt("roomid"),
                         rs.getInt("capacity"),
