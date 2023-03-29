@@ -20,6 +20,7 @@ public class RoomServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         hotelChainName = request.getParameter("hotelchainname");
         hotelAddress = request.getParameter("address");
+
         ConnectionDB con = new ConnectionDB();
         try {
             con.getConnection();
