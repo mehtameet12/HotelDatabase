@@ -3,6 +3,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="com.Hotels.*" %>
+<%@ page import="com.Hotels.RoomService" %>
 <%@ page import="java.sql.PreparedStatement" %>
 <%@ page import="java.sql.ResultSet" %>
 <%@ page import="java.sql.SQLException" %>
@@ -32,12 +33,15 @@
 
     //---------------------------------------
 
-    RoomService roomservice = new RoomService();
+    RoomService roomService = new RoomService();
+    RoomServlet roomServlet = new RoomServlet();
     List<Room> rooms = null;
     try {
-        String hotelChainName = request.getParameter("hotelchainname");
-        String hotelAddress = request.getParameter("address");
-        rooms = roomservice.availableRooms(hotelChainName,hotelAddress );
+        String hotelAddress = (String) request.getAttribute("hotelAddress");
+        String hotelChainName = (String) request.getAttribute("hotelChainName");
+        System.out.println(hotelChainName);
+        System.out.println(hotelAddress);
+        rooms = roomService.availableRooms(request, hotelAddress, hotelChainName);
     } catch (Exception e) {
         e.printStackTrace();
     }
@@ -53,16 +57,26 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title> Hotel Chain List </title>
+    <title>Book Your Dream Vacation</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="assets/css/styles.css">
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700&amp;display=swap">
+    <link rel="stylesheet" href="assets/css/pikaday.min.css">
 </head>
 
 <body>
-    <jsp:include page="navbar.jsp"/>
-
+<nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-white portfolio-navbar gradient">
+    <div class="container"><a class="navbar-brand logo" href="index.jsp">Pentago</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navbarNav"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="index.jsp">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="index.jsp">Booking/Check-in</a></li>
+                <li class="nav-item"><a class="nav-link active" href="addcustomer.jsp">Add Customer</a></li>
+                <li class="nav-item"><a class="nav-link" href="manage.jsp">Manage Hotel</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<section class="portfolio-block contact">
     <input type="hidden" name="message" id="message" value='<%=msgField%>' >
     <div class="container">
         <div class="row" id="row">
@@ -70,7 +84,7 @@
                 <div class="card" id="card-container">
                     <div class="card-body" id="card">
                         <% if (rooms.size() == 0) { %>
-                        <h1 style="margin-top: 5rem;">No hotels found!</h1>
+                        <h2 style="margin-top: 5rem;">No such rooms found, please change your search criteria!</h2>
                         <% } else { %>
                         <div class="table-responsive">
                             <table class="table">
@@ -112,6 +126,7 @@
             </div>
         </div>
     </div>
+</section>
 
     <script>
         function setModalFields(row) {

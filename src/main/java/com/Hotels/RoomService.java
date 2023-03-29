@@ -1,5 +1,7 @@
 package com.Hotels;
 
+import jakarta.servlet.http.HttpServletRequest;
+
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -62,10 +64,12 @@ public class RoomService {
         }
     }
 
-    public List<Room> availableRooms (String hotelChainName, String hotelAddress) throws Exception
+    public List<Room> availableRooms (HttpServletRequest request, String hotelAddress, String hotelChainName) throws Exception
     {
+//        String hotelChainName = request.getParameter("hotelchainname");
+//        String hotelAddress = request.getParameter("address");
         // sql query
-        String request = "SELECT r.roomid, r.capacity, r.status, r.price, r.roomview, r.extension, r.damages, r.amenities, r.hotelid " +
+        String query = "SELECT r.roomid, r.capacity, r.status, r.price, r.roomview, r.extension, r.damages, r.amenities, r.hotelid " +
                 "FROM hotelchainschema.rooms r " +
                 "INNER JOIN hotelchainschema.hotels h ON r.hotelid = h.hotelid " +
                 "INNER JOIN hotelchainschema.hotelchain hc ON h.name = hc.name " +
@@ -81,7 +85,7 @@ public class RoomService {
 
         try (Connection con = db.getConnection()) {
             // prepare statement
-            PreparedStatement stmt = con.prepareStatement(request);
+            PreparedStatement stmt = con.prepareStatement(query);
             stmt.setString(1,hotelAddress);
             stmt.setString(2,hotelChainName);
 
