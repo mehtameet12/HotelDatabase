@@ -72,6 +72,16 @@ public class ConnectionDB {
         pstmt.executeUpdate();
     }
 
+    public void insertHotel(Integer category, String address, Integer totalrooms, String name) throws SQLException{
+        String sql = "INSERT INTO hotelchainschema.hotels (category,address,totalrooms,name) VALUES (?, ?, ?, ?)";
+        PreparedStatement pstmt = con.prepareStatement(sql);
+        pstmt.setInt(1, category);
+        pstmt.setString(2, address);
+        pstmt.setInt(3, totalrooms);
+        pstmt.setString(4, name);
+        pstmt.executeUpdate();
+    }
+
 
     /**
      * Close database connection. It is very important to close the database connection

@@ -52,7 +52,7 @@
             <form style="margin-top: 10px;" action="/HotelDatabase/addRoom" method="post">
                 <h2>ADD ROOM</h2>
                 <div class="mb-3"><label class="form-label" >Hotel-ID</label><input class="form-control" type="number" name="hotelid"></div>
-                <div class="mb-3"><label class="form-label" >Room No.</label><input class="form-control item" type="number" id="subject-11" name="roomid"></div>
+                <div class="mb-3"><label class="form-label" >Room No.</label><input class="form-control item" type="number"  name="roomid"></div>
                 <div class="mb-3"><label class="form-label" >Capacity</label><select class="form-select" name="capacity">
                     <optgroup label="Input Capacity">
                         <option value="2" selected="">2</option>
@@ -71,20 +71,20 @@
                         <option value="Garden view">Garden view</option>
                     </optgroup>
                 </select></div>
-                <div class="mb-3"><label class="form-label" >Price</label><input class="form-control item" type="number" id="subject-11"name="price"></div>
-                <div class="mb-3"><label class="form-label" >Amenities</label><input class="form-control item" type="text" id="subject-11" name="amenities"></div>
+                <div class="mb-3"><label class="form-label" >Price</label><input class="form-control item" type="number" name="price"></div>
+                <div class="mb-3"><label class="form-label" >Amenities</label><input class="form-control item" type="text"  name="amenities"></div>
                 <div class="mb-3"><label class="form-label" >Extension</label><select class="form-select"name="extension" >
                     <optgroup label="Extension Possible">
                         <option value="true" selected="">Yes</option>
                         <option value="false">No</option>
                     </optgroup>
                 </select></div>
-                <div class="mb-3"><label class="form-label" for="subject">Problems/Damages</label><input class="form-control item" type="text" name="damages" id="subject-13" style="height: 75px;"></div>
+                <div class="mb-3"><label class="form-label" >Problems/Damages</label><input class="form-control item" type="text" name="damages" id="subject-13" style="height: 75px;"></div>
                 <button class="btn btn-primary btn-lg d-block w-100" type="submit">Add Room</button>
             </form>
-            <form style="margin-top: 10px;">
+            <form style="margin-top: 10px;" action="/HotelDatabase/addHotel" method="post">
                 <h2>ADD HOTEL</h2>
-                <div class="mb-3"><label class="form-label" for="subject">Select Hotel Chain</label><select class="form-select" id="subject-7">
+                <div class="mb-3"><label class="form-label">Select Hotel Chain</label><select class="form-select" id="subject-7" name ="name">
                     <optgroup label="Hotel Chains">
                         <option value="Mariott" selected="">Mariott</option>
                         <option value="Hayat">Hayat</option>
@@ -93,37 +93,8 @@
                         <option value="4Seasons">4 Seasons</option>
                     </optgroup>
                 </select></div>
-                <div class="mb-3"><label class="form-label" for="email">Location</label><select class="form-select" id="subject-10">
-                    <optgroup label="Cities">
-                        <option value="Ottawa" selected="">Ottawa</option>
-                        <option value="Toronto">Toronto</option>
-                        <option value="Halifax">Halifax</option>
-                        <option value="Calgary">Calgary</option>
-                        <option value="Moncton">Moncton</option>
-                        <option value="Windsor">Windsor</option>
-                        <option value="Vancouver">Vancouver</option>
-                        <option value="Winnipeg">Winnipeg</option>
-                        <option value="Montreal">Montreal</option>
-                        <option value="Regina">Regina</option>
-                        <option value="Hamilton">Hamilton</option>
-                        <option value="Surrey">Surrey</option>
-                        <option value="London">London</option>
-                        <option value="Banff">Banff</option>
-                        <option value="Kanata">Kanata</option>
-                        <option value="Milton">Milton</option>
-                        <option value="Oshawa">Oshawa</option>
-                        <option value="Edmonton">Edmonton</option>
-                        <option value="Sudbury">Sudbury</option>
-                        <option value="Barrie">Barrie</option>
-                        <option value="Kingston">Kingston</option>
-                        <option value="Thunderbay">Thunderbay</option>
-                        <option value="Victoria">Victoria</option>
-                        <option value="Niagara">Niagara</option>
-                        <option value="Guelph">Guelph</option>
-                        <option value="Quebec">Quebec</option>
-                    </optgroup>
-                </select></div>
-                <div class="mb-3"><label class="form-label" for="email">Hotel Category</label><select class="form-select" id="subject-12">
+                <div class="mb-3"><label class="form-label" >Location</label><input class="form-control item" type="text" id="subject-3" min="8" name="address"></div>
+                <div class="mb-3"><label class="form-label" >Hotel Category</label><select class="form-select" id="subject-12" name="category">
                     <optgroup label="Star Hotels">
                         <option value="1" selected="">1 Star</option>
                         <option value="2">2 Star</option>
@@ -132,10 +103,7 @@
                         <option value="5">5 Star</option>
                     </optgroup>
                 </select></div>
-                <div class="mb-3"><label class="form-label" for="subject">Total No. of Rooms</label><input class="form-control item" type="number" id="subject-3" min="8"></div>
-                <div class="mb-3"><label class="form-label" for="subject">Address</label><input class="form-control item" type="text" id="subject-2"></div>
-                <div class="mb-3"><label class="form-label" for="email">Phone No.</label><input class="form-control" type="number" id="subject-5"></div>
-                <div class="mb-3"><label class="form-label" for="email">Email Address</label><input class="form-control" type="email" id="subject-4"></div>
+                <div class="mb-3"><label class="form-label" >Total No. of Rooms</label><input class="form-control item" type="number"  min="8" name="totalrooms"></div>
                 <div class="mb-3"></div><button class="btn btn-primary btn-lg d-block w-100" type="submit">Add Hotel</button>
             </form>
         </div>
