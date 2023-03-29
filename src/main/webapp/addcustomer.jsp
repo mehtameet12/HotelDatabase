@@ -23,10 +23,10 @@
     <div class="container"><a class="navbar-brand logo" href="#">Pentago</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navbarNav"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="booking.html">Booking/Check-in</a></li>
-                <li class="nav-item"><a class="nav-link active" href="customer.html">Add Customer</a></li>
-                <li class="nav-item"><a class="nav-link" href="manage.html">Manage Hotel</a></li>
+                <li class="nav-item"><a class="nav-link" href="index.jsp">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="index.jsp">Booking/Check-in</a></li>
+                <li class="nav-item"><a class="nav-link active" href="#">Add Customer</a></li>
+                <li class="nav-item"><a class="nav-link" href="manage.jsp">Manage Hotel</a></li>
             </ul>
         </div>
     </div>
@@ -37,12 +37,12 @@
             <div class="heading">
                 <h2>Customer INFO</h2>
             </div>
-            <form>
-                <div class="mb-3"><label class="form-label" for="name">Customer Name</label><input class="form-control item" type="text" id="name"></div>
-                <div class="mb-3"><label class="form-label" for="subject">Address</label><input class="form-control item" type="text" id="subject"></div>
-                <div class="mb-3"><label class="form-label" for="subject">Phone No.</label><input class="form-control item" type="tel" id="subject-1"></div>
-                <div class="mb-3"><label class="form-label" for="email">Email</label><input class="form-control item" type="email" id="email"></div>
-                <div class="mb-3"><label class="form-label" for="message">Message</label><textarea class="form-control item" id="message"></textarea></div>
+            <form action="/HotelDatabase/customer" method="post">
+                <div class="mb-3"><label class="form-label" >Customer Name</label><input class="form-control item" type="text" id="name"></div>
+                <div class="mb-3"><label class="form-label" >Address</label><input class="form-control item" type="text" id="address"></div>
+                <div class="mb-3"><label class="form-label" >Phone No.</label><input class="form-control item" type="tel" id="phone"></div>
+                <div class="mb-3"><label class="form-label" >SIN</label><input class="form-control item" type="tel" id="sin"></div>
+
                 <div class="mb-3"><button class="btn btn-primary btn-lg d-block w-100" type="submit">Add Customer</button></div>
             </form>
         </div>

@@ -2,6 +2,7 @@ package com.Hotels;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 public class ConnectionDB {
 
@@ -34,6 +35,16 @@ public class ConnectionDB {
                     + e.getMessage());
         }
 
+    }
+
+    public void insertEmployee(Integer empid, String name, String address, String emprole) throws SQLException {
+        String sql = "INSERT INTO hotelchainschema.employee (empid, name, address, emprole) VALUES (?, ?, ?, ?)";
+        PreparedStatement pstmt = con.prepareStatement(sql);
+        pstmt.setInt(1, empid);
+        pstmt.setString(2, name);
+        pstmt.setString(3, address);
+        pstmt.setString(4, emprole);
+        pstmt.executeUpdate();
     }
 
     /**
