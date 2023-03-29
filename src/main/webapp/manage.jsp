@@ -23,10 +23,10 @@
     <div class="container"><a class="navbar-brand logo" href="#">Pentago</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navbarNav"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="booking.html">Booking/Check-in</a></li>
-                <li class="nav-item"><a class="nav-link" href="customer.html">Add Customer</a></li>
-                <li class="nav-item"><a class="nav-link active" href="manage.html">Manage Hotel</a></li>
+                <li class="nav-item"><a class="nav-link" href="index.jsp">Home</a></li>
+                <li class="nav-item"><a class="nav-link active" href="index.jsp">Booking/Check-in</a></li>
+                <li class="nav-item"><a class="nav-link" href="addcustomer.jsp">Add Customer</a></li>
+                <li class="nav-item"><a class="nav-link" href="manage.jsp">Manage Hotel</a></li>
             </ul>
         </div>
     </div>
@@ -35,14 +35,14 @@
     <section class="portfolio-block contact">
         <div class="container" style="margin-bottom: 5px;">
             <div class="heading"></div>
-            <form style="margin-top: 10px;">
+            <form style="margin-top: 10px;" action="/HotelDatabase/addEmployee" method="post">
                 <h2>EMPLOYEE INFO</h2>
-                <div class="mb-3"><label class="form-label" for="name">Employee Name</label><input class="form-control item" type="text" id="name"></div>
-                <div class="mb-3"><label class="form-label" for="subject">SIN No.</label><input class="form-control item" type="text" id="subject"></div>
-                <div class="mb-3"><label class="form-label" for="subject">Address</label><input class="form-control item" type="tel" id="subject-1"></div>
-                <div class="mb-3"><label class="form-label" for="email">Role</label><select class="form-select">
+                <div class="mb-3"><label class="form-label" >Employee Name</label><input class="form-control item" type="text" name="name"></div>
+                <div class="mb-3"><label class="form-label" >SIN No.</label><input class="form-control item" type="number" name="sin"></div>
+                <div class="mb-3"><label class="form-label" >Address</label><input class="form-control item" type="text" name="address"></div>
+                <div class="mb-3"><label class="form-label" >Role</label><select class="form-select" name="role">
                     <optgroup label="Select Roles">
-                        <option value="Housekeeping" selected="">Housekeeping</option>
+                        <option value="Housekeeping" >Housekeeping</option>
                         <option value="Maintenance">Maintenance</option>
                         <option value="Front Desk">Front Desk</option>
                     </optgroup>
