@@ -38,10 +38,9 @@
                 <h2>Customer INFO</h2>
             </div>
             <form action="/HotelDatabase/customer" method="post">
-                <div class="mb-3"><label class="form-label" >Customer Name</label><input class="form-control item" type="text" id="name"></div>
-                <div class="mb-3"><label class="form-label" >Address</label><input class="form-control item" type="text" id="address"></div>
-                <div class="mb-3"><label class="form-label" >Phone No.</label><input class="form-control item" type="tel" id="phone"></div>
-                <div class="mb-3"><label class="form-label" >SIN</label><input class="form-control item" type="tel" id="sin"></div>
+                <div class="mb-3"><label class="form-label" >Customer Name</label><input class="form-control item" type="text" name="name"></div>
+                <div class="mb-3"><label class="form-label" >Address</label><input class="form-control item" type="text" name="address"></div>
+                <div class="mb-3"><label class="form-label" >SIN</label><input class="form-control item" type="tel" name="sin"></div>
 
                 <div class="mb-3"><button class="btn btn-primary btn-lg d-block w-100" type="submit">Add Customer</button></div>
             </form>

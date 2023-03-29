@@ -49,10 +49,11 @@
                 </select></div>
                 <div class="mb-3"><button class="btn btn-primary btn-lg d-block w-100" type="submit">Add Employee</button></div>
             </form>
-            <form style="margin-top: 10px;">
+            <form style="margin-top: 10px;" action="/HotelDatabase/addRoom" method="post">
                 <h2>ADD ROOM</h2>
-                <div class="mb-3"><label class="form-label" for="email">Hotel-ID</label><input class="form-control" type="number"></div>
-                <div class="mb-3"><label class="form-label" for="email">Capacity</label><select class="form-select">
+                <div class="mb-3"><label class="form-label" >Hotel-ID</label><input class="form-control" type="number" name="hotelid"></div>
+                <div class="mb-3"><label class="form-label" >Room No.</label><input class="form-control item" type="number" id="subject-11" name="roomid"></div>
+                <div class="mb-3"><label class="form-label" >Capacity</label><select class="form-select" name="capacity">
                     <optgroup label="Input Capacity">
                         <option value="2" selected="">2</option>
                         <option value="3">3</option>
@@ -62,7 +63,7 @@
                     </optgroup>
                 </select></div>
                 <div class="mb-3"></div>
-                <div class="mb-3"><label class="form-label" for="subject">View</label><select class="form-select" id="subject-6">
+                <div class="mb-3"><label class="form-label" >View</label><select class="form-select" id="subject-6" name="roomview">
                     <optgroup label="View">
                         <option value="Mountain view" selected="">Mountain view</option>
                         <option value="Sea view">Sea view</option>
@@ -70,14 +71,16 @@
                         <option value="Garden view">Garden view</option>
                     </optgroup>
                 </select></div>
-                <div class="mb-3"><label class="form-label" for="subject">Amenities</label><input class="form-control item" type="text" id="subject-11"></div>
-                <div class="mb-3"><label class="form-label" for="subject">Extension</label><select class="form-select">
+                <div class="mb-3"><label class="form-label" >Price</label><input class="form-control item" type="number" id="subject-11"name="price"></div>
+                <div class="mb-3"><label class="form-label" >Amenities</label><input class="form-control item" type="text" id="subject-11" name="amenities"></div>
+                <div class="mb-3"><label class="form-label" >Extension</label><select class="form-select"name="extension" >
                     <optgroup label="Extension Possible">
                         <option value="true" selected="">Yes</option>
                         <option value="false">No</option>
                     </optgroup>
                 </select></div>
-                <div class="mb-3"><label class="form-label" for="subject">Problems/Damages</label><input class="form-control item" type="text" id="subject-13" style="height: 75px;"></div><button class="btn btn-primary btn-lg d-block w-100" type="submit">Add Room</button>
+                <div class="mb-3"><label class="form-label" for="subject">Problems/Damages</label><input class="form-control item" type="text" name="damages" id="subject-13" style="height: 75px;"></div>
+                <button class="btn btn-primary btn-lg d-block w-100" type="submit">Add Room</button>
             </form>
             <form style="margin-top: 10px;">
                 <h2>ADD HOTEL</h2>

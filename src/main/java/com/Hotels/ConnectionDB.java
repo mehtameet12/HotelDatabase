@@ -1,9 +1,7 @@
 package com.Hotels;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
+
 public class ConnectionDB {
 
     /* Database connection settings, change dbName, dbusername, dbpassword */
@@ -47,6 +45,33 @@ public class ConnectionDB {
         pstmt.setString(4, emprole);
         pstmt.executeUpdate();
     }
+
+    public void insertCustomer(Integer custid, String name, String address, Date regdate) throws SQLException {
+        String sql = "INSERT INTO hotelchainschema.customer (custid, name, address, regdate) VALUES (?, ?, ?, ?)";
+        PreparedStatement pstmt = con.prepareStatement(sql);
+        pstmt.setInt(1, custid);
+        pstmt.setString(2, name);
+        pstmt.setString(3, address);
+        pstmt.setDate(4, regdate);
+        pstmt.executeUpdate();
+    }
+
+    public void insertRoom(Integer roomid, Integer capacity, Boolean status, Integer price, String roomview, Boolean extension, String damages,String[] amenitiesArr, Integer hotelid) throws SQLException{
+        Array amenities = con.createArrayOf("VARCHAR",amenitiesArr);
+        String sql = "INSERT INTO hotelchainschema.rooms (roomid, capacity, status, price, roomview, extension, damages, amenities , hotelid) VALUES (?, ?, ?, ?,?, ?, ?, ?,? )";
+        PreparedStatement pstmt = con.prepareStatement(sql);
+        pstmt.setInt(1,roomid);
+        pstmt.setInt(2,capacity);
+        pstmt.setBoolean(3,status);
+        pstmt.setInt(4, price);
+        pstmt.setString(5, roomview);
+        pstmt.setBoolean(6,extension);
+        pstmt.setString(7,damages);
+        pstmt.setArray(8, amenities);
+        pstmt.setInt(9,hotelid);
+        pstmt.executeUpdate();
+    }
+
 
     /**
      * Close database connection. It is very important to close the database connection

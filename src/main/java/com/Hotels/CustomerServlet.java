@@ -6,6 +6,9 @@ import jakarta.servlet.http.*;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
+import java.sql.SQLException;
+import java.time.LocalDate;
 
 
 @WebServlet("/customer")
@@ -19,9 +22,24 @@ public class CustomerServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String customerName = request.getParameter("name");
         String customerAddress = request.getParameter("address");
-        String customerPhone = request.getParameter("phone");
         String customerSIN = request.getParameter("sin");
+        Date entryDate = Date.valueOf(LocalDate.now());
+        ConnectionDB con = new ConnectionDB();
 
+        try {
+            con.getConnection();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+
+        try {
+            con.insertCustomer(Integer.valueOf(customerSIN), customerName, customerAddress, entryDate );
+            System.out.println("Successfull");
+            con.close();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
 
 
     }

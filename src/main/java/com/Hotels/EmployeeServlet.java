@@ -33,9 +33,7 @@ public class EmployeeServlet extends HttpServlet {
         }
 
         try {
-
             con.insertEmployee(Integer.valueOf(employeeSIN), employeeName, employeeAddress, employeeRole);
-            System.out.println("Successfull");
             con.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
