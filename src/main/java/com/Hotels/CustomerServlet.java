@@ -6,9 +6,10 @@ import jakarta.servlet.http.*;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 
 
-@WebServlet("/customer")
+@WebServlet("/updateCustomer")
 public class CustomerServlet extends HttpServlet {
 
     public void init(ServletConfig config) {
@@ -19,11 +20,22 @@ public class CustomerServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String customerName = request.getParameter("name");
         String customerAddress = request.getParameter("address");
-        String customerPhone = request.getParameter("phone");
-        String customerSIN = request.getParameter("sin");
 
+        ConnectionDB con = new ConnectionDB();
 
+        try {
+            con.getConnection();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
 
+        try {
+            con.updateCustomer(customerName, customerAddress);
+            System.out.println("Successfull");
+            con.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void destroy() {

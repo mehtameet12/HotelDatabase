@@ -9,7 +9,7 @@ public class ConnectionDB {
     /* Database connection settings, change dbName, dbusername, dbpassword */
     private final String ipAddress = "127.0.0.1";
     private final String dbServerPort = "5432";
-    private final String dbName = "HotelUpdate";
+    private final String dbName = "DataBF";
     //dbName = "Hotel" for anis
     private final String dbusername = "postgres";
     private final String dbpassword = "Summer8393";
@@ -45,6 +45,14 @@ public class ConnectionDB {
         pstmt.setString(2, name);
         pstmt.setString(3, address);
         pstmt.setString(4, emprole);
+        pstmt.executeUpdate();
+    }
+
+    public void updateCustomer(String name, String address)throws SQLException{
+        String sql = "INSERT INTO hotelchainschema.customer (name, address) VALUES (?, ?)";
+        PreparedStatement pstmt = con.prepareStatement(sql);
+        pstmt.setString(1, name);
+        pstmt.setString(2, address);
         pstmt.executeUpdate();
     }
 
