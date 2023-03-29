@@ -15,19 +15,13 @@
 <div class="container">
     <h1 class="text-center">Update Customer</h1>
     <hr>
-    <form action="UpdateCustomerServlet" method="POST">
-        <div class="form-group">
-            <label for="customerId">Customer ID:</label>
-            <input type="text" class="form-control" id="customerId" name="customerId" required>
-        </div>
+    <form action="/HotelDatabase/updateCustomer" method="POST">
+
         <div class="form-group">
             <label for="firstName">First Name:</label>
             <input type="text" class="form-control" id="firstName" name="firstName" required>
         </div>
-        <div class="form-group">
-            <label for="lastName">Last Name:</label>
-            <input type="text" class="form-control" id="lastName" name="lastName" required>
-        </div>
+
         <div class="form-group">
             <label for="address">Address:</label>
             <input type="text" class="form-control" id="address" name="address" required>

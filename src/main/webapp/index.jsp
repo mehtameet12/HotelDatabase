@@ -28,6 +28,7 @@
                 <li class="nav-item"><a class="nav-link active" href="#">Booking/Check-in</a></li>
                 <li class="nav-item"><a class="nav-link" href="addcustomer.jsp">Add Customer</a></li>
                 <li class="nav-item"><a class="nav-link" href="manage.jsp">Manage Hotel</a></li>
+                <li class="nav-item"><a class="nav-link" href="updateCustomer.jsp">Update Customer</a></li>
             </ul>
         </div>
     </div>
@@ -120,7 +121,7 @@
                                 <option value="6">6</option>
                             </optgroup>
                         </select></div>
-                        <button class="btn btn-primary btn-lg d-block w-100" id="show-btn"  type="submit" >Search Rooms</button>
+                        <a class="btn btn-primary btn-lg d-block w-100" id="show-btn"  type="submit" href="room.jsp">Search Rooms</a>
                     </form>
                 </div>
             </form>
