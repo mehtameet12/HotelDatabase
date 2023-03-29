@@ -27,6 +27,7 @@
                 <li class="nav-item"><a class="nav-link" href="index.jsp">Booking/Check-in</a></li>
                 <li class="nav-item"><a class="nav-link active" href="#">Add Customer</a></li>
                 <li class="nav-item"><a class="nav-link" href="manage.jsp">Manage Hotel</a></li>
+
             </ul>
         </div>
     </div>
@@ -35,7 +36,7 @@
     <section class="portfolio-block contact">
         <div class="container">
             <div class="heading">
-                <h2>Customer INFO</h2>
+                <h2>Add Customer</h2>
             </div>
             <form action="/HotelDatabase/customer" method="post">
                 <div class="mb-3"><label class="form-label" >Customer Name</label><input class="form-control item" type="text" name="name"></div>
@@ -46,6 +47,21 @@
             </form>
         </div>
     </section>
+
+    <section class="portfolio-block contact">
+        <div class="container">
+            <div class="heading">
+                <h2>Update Customer</h2>
+            </div>
+            <form action="/HotelDatabase/updateCustomer" method="post">
+                <div class="mb-3"><label class="form-label" >CustID</label><input class="form-control item" type="tel" name="custid"></div>
+                <div class="mb-3"><label class="form-label" >Customer Name</label><input class="form-control item" type="text" name="name"></div>
+                <div class="mb-3"><label class="form-label" >Address</label><input class="form-control item" type="text" name="address"></div>
+                <div class="mb-3"><button class="btn btn-primary btn-lg d-block w-100" type="submit">Update Customer</button></div>
+            </form>
+        </div>
+    </section>
+
 </main>
 <footer class="page-footer" style="height: 100px;">
     <div class="container">
@@ -56,6 +72,7 @@
 <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 <script src="assets/js/pikaday.min.js"></script>
 <script src="assets/js/theme.js"></script>
+
 </body>
 
 </html>
