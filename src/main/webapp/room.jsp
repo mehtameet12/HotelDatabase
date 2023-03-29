@@ -39,9 +39,17 @@
     try {
         String hotelAddress = (String) request.getAttribute("hotelAddress");
         String hotelChainName = (String) request.getAttribute("hotelChainName");
-        System.out.println(hotelChainName);
-        System.out.println(hotelAddress);
-        rooms = roomService.availableRooms(request, hotelAddress, hotelChainName);
+        String startDate = (String) request.getAttribute("fromdate");
+        String endDate = (String) request.getAttribute("todate");
+        String category = (String) request.getAttribute("category");
+        String price = (String) request.getAttribute("price");
+        //Integer category = Integer.valueOf(request.getParameter("category"));
+        //Integer price = Integer.valueOf(request.getParameter("price"));
+        String roomView = (String) request.getAttribute("roomview");
+        String capacity = (String) request.getAttribute("capacity");
+        //Integer capacity = Integer.valueOf(request.getParameter("capacity"));
+
+        rooms = roomService.availableRooms(request, hotelAddress, hotelChainName, category, capacity, roomView, price);
     } catch (Exception e) {
         e.printStackTrace();
     }

@@ -64,19 +64,45 @@ public class RoomService {
         }
     }
 
-    public List<Room> availableRooms (HttpServletRequest request, String hotelAddress, String hotelChainName) throws Exception
+    public List<Room> availableRooms (HttpServletRequest request, String hotelAddress, String hotelChainName, String hotelCategory, String roomCapacity, String roomView, String roomPrice) throws Exception
     {
-//        String hotelChainName = request.getParameter("hotelchainname");
-//        String hotelAddress = request.getParameter("address");
-        // sql query
+
         String query = "SELECT r.roomid, r.capacity, r.status, r.price, r.roomview, r.extension, r.damages, r.amenities, r.hotelid " +
                 "FROM hotelchainschema.rooms r " +
                 "INNER JOIN hotelchainschema.hotels h ON r.hotelid = h.hotelid " +
                 "INNER JOIN hotelchainschema.hotelchain hc ON h.name = hc.name " +
-                "WHERE r.status = true AND h.address = ? AND hc.name = ?";
+                "WHERE r.status = true ";
 
-//        System.out.println(hotelAddress);
-//        System.out.println(hotelChainName);
+        if (hotelChainName != null && !hotelChainName.isEmpty()) {
+            query += "AND hc.name = '" + hotelChainName + "' ";
+        }
+        if (hotelAddress != null && !hotelAddress.isEmpty()) {
+            query += "AND h.address = '" + hotelAddress + "' ";
+        }
+        if (hotelCategory != null && !hotelCategory.isEmpty()) {
+            query += "AND h.category = " + Integer.parseInt(hotelCategory) + " ";
+        }
+        if (roomCapacity != null && !roomCapacity.isEmpty()) {
+            query += "AND r.capacity >= " + Integer.parseInt(roomCapacity) + " ";
+        }
+        if (roomView != null && !roomView.isEmpty()) {
+            query += "AND r.roomview = '" + roomView + "' ";
+        }
+        if (roomPrice != null && !roomPrice.isEmpty()) {
+            query += "AND r.price <= " + Integer.parseInt(roomPrice) + " ";
+        }
+
+
+
+        // sql query
+//        String query = "SELECT r.roomid, r.capacity, r.status, r.price, r.roomview, r.extension, r.damages, r.amenities, r.hotelid " +
+//                "FROM hotelchainschema.rooms r " +
+//                "INNER JOIN hotelchainschema.hotels h ON r.hotelid = h.hotelid " +
+//                "INNER JOIN hotelchainschema.hotelchain hc ON h.name = hc.name " +
+//                "WHERE r.status = true AND h.address = ? AND hc.name = ?";
+
+
+
         // connection object
         ConnectionDB db = new ConnectionDB();
 
@@ -86,8 +112,8 @@ public class RoomService {
         try (Connection con = db.getConnection()) {
             // prepare statement
             PreparedStatement stmt = con.prepareStatement(query);
-            stmt.setString(1,hotelAddress);
-            stmt.setString(2,hotelChainName);
+//            stmt.setString(1,hotelAddress);
+//            stmt.setString(2,hotelChainName);
 
             // get the results from executing the query
             ResultSet rs = stmt.executeQuery();
