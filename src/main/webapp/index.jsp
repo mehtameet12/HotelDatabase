@@ -39,62 +39,19 @@
                 <h2>SEARCH FOR HOTELS</h2>
             </div>
             <form>
-                <div class="mb-3"><label class="form-label" for="subject">Select Hotel Chain</label><select class="form-select" id="subject">
-                    <optgroup label="Hotel Chains">
-                        <option value="Mariott" selected="">Mariott</option>
-                        <option value="Hayat">Hayat</option>
-                        <option value="Hilton">Hilton</option>
-                        <option value="ResidenceInn">Residence Inn</option>
-                        <option value="4Seasons">4 Seasons</option>
-                    </optgroup>
-                </select></div>
-                <div class="mb-3"><label class="form-label" for="email">Location</label><select class="form-select" id="subject-1">
-                    <optgroup label="Cities">
-                        <option value="Ottawa" selected="">Ottawa</option>
-                        <option value="Toronto">Toronto</option>
-                        <option value="Halifax">Halifax</option>
-                        <option value="Calgary">Calgary</option>
-                        <option value="Moncton">Moncton</option>
-                        <option value="Windsor">Windsor</option>
-                        <option value="Vancouver">Vancouver</option>
-                        <option value="Winnipeg">Winnipeg</option>
-                        <option value="Montreal">Montreal</option>
-                        <option value="Regina">Regina</option>
-                        <option value="Hamilton">Hamilton</option>
-                        <option value="Surrey">Surrey</option>
-                        <option value="London">London</option>
-                        <option value="Banff">Banff</option>
-                        <option value="Kanata">Kanata</option>
-                        <option value="Milton">Milton</option>
-                        <option value="Oshawa">Oshawa</option>
-                        <option value="Edmonton">Edmonton</option>
-                        <option value="Sudbury">Sudbury</option>
-                        <option value="Barrie">Barrie</option>
-                        <option value="Kingston">Kingston</option>
-                        <option value="Thunderbay">Thunderbay</option>
-                        <option value="Victoria">Victoria</option>
-                        <option value="Niagara">Niagara</option>
-                        <option value="Guelph">Guelph</option>
-                        <option value="Quebec">Quebec</option>
-                    </optgroup>
-                </select></div>
                 <div class="mb-3">
-                    <div class="row">
-                        <div class="col-md-6"><label class="form-label" for="hire-date">From</label><input class="form-control" id="hire-date" type="date"></div>
-                        <div class="col-md-6 button"><label class="form-label" for="hire-date">To</label><input class="form-control" id="hire-date-1" type="date"></div>
-                    </div>
-<<<<<<< Updated upstream
-                    <form>
-                        <div class="mb-3"><label class="form-label" for="subject">Select Hotel Chain</label><select class="form-select" id="subject">
+
+                    <form method="post" action="/HotelDatabase/room">
+                        <div class="mb-3"><label class="form-label" for="hotelchainname">Select Hotel Chain</label><select class="form-select" id="hotelchainname" name="hotelchainname">
                             <optgroup label="Hotel Chains">
-                                <option value="Mariott" selected="">Mariott</option>
+                                <option value="Marriott" selected="">Marriott</option>
                                 <option value="Hayat">Hayat</option>
                                 <option value="Hilton">Hilton</option>
                                 <option value="ResidenceInn">Residence Inn</option>
                                 <option value="4Seasons">4 Seasons</option>
                             </optgroup>
                         </select></div>
-                        <div class="mb-3"><label class="form-label" for="email">Location</label><select class="form-select" id="subject-1">
+                        <div class="mb-3"><label class="form-label" for="address">Location</label><select class="form-select" id="address" name="address">
                             <optgroup label="Cities">
                                 <option value="Ottawa" selected="">Ottawa</option>
                                 <option value="Toronto">Toronto</option>
@@ -130,7 +87,7 @@
                                 <div class="col-md-6 button"><label class="form-label" for="hire-date">To</label><input class="form-control" id="hire-date-1" type="date"></div>
                             </div>
                         </div>
-                        <div class="mb-3"><label class="form-label" for="email">Hotel Category</label><select class="form-select" id="subject-4">
+                        <div class="mb-3"><label class="form-label" for="stars">Hotel Category</label><select class="form-select" id="stars">
                             <optgroup label="Star Hotels">
                                 <option value="1" selected="">1 Star</option>
                                 <option value="2">2 Star</option>
@@ -139,14 +96,14 @@
                                 <option value="5">5 Star</option>
                             </optgroup>
                         </select></div>
-                        <div class="mb-3"><label class="form-label" for="email">Price</label><select class="form-select" id="subject-2">
+                        <div class="mb-3"><label class="form-label" for="price">Price</label><select class="form-select" id="price">
                             <optgroup label="$CAD">
                                 <option value="12" selected="">Less than 30</option>
                                 <option value="13">30 to 60</option>
                                 <option value="14">More than 60</option>
                             </optgroup>
                         </select></div>
-                        <div class="mb-3"><label class="form-label" for="email">Room View</label><select class="form-select" id="subject-3">
+                        <div class="mb-3"><label class="form-label" for="view">Room View</label><select class="form-select" id="view">
                             <optgroup label="View">
                                 <option value="Mountain view" selected="">Mountain view</option>
                                 <option value="Sea view">Sea view</option>
@@ -154,7 +111,7 @@
                                 <option value="Garden view">Garden view</option>
                             </optgroup>
                         </select></div>
-                        <div class="mb-3"><label class="form-label" for="email">Capacity</label><select class="form-select" id="subject-5">
+                        <div class="mb-3"><label class="form-label" for="capacity">Capacity</label><select class="form-select" id="capacity">
                             <optgroup label="Room Capacity">
                                 <option value="2" selected="">2</option>
                                 <option value="3">3</option>
@@ -165,42 +122,7 @@
                         </select></div>
                         <a class="btn btn-primary btn-lg d-block w-100" id="show-btn" href="room.jsp">Search Rooms</a>
                     </form>
-=======
->>>>>>> Stashed changes
                 </div>
-                <div class="mb-3"><label class="form-label" for="email">Hotel Category</label><select class="form-select" id="subject-4">
-                    <optgroup label="Star Hotels">
-                        <option value="1" selected="">1 Star</option>
-                        <option value="2">2 Star</option>
-                        <option value="3">3 Star</option>
-                        <option value="4">4 Star</option>
-                        <option value="5">5 Star</option>
-                    </optgroup>
-                </select></div>
-                <div class="mb-3"><label class="form-label" for="email">Price</label><select class="form-select" id="subject-2">
-                    <optgroup label="$CAD">
-                        <option value="12" selected="">Less than 30</option>
-                        <option value="13">30 to 60</option>
-                        <option value="14">More than 60</option>
-                    </optgroup>
-                </select></div>
-                <div class="mb-3"><label class="form-label" for="email">Room View</label><select class="form-select" id="subject-3">
-                    <optgroup label="View">
-                        <option value="Mountain view" selected="">Mountain view</option>
-                        <option value="Sea view">Sea view</option>
-                        <option value="City view">City view</option>
-                        <option value="Garden view">Garden view</option>
-                    </optgroup>
-                </select></div>
-                <div class="mb-3"><label class="form-label" for="email">Capacity</label><select class="form-select" id="subject-5">
-                    <optgroup label="Room Capacity">
-                        <option value="2" selected="">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                    </optgroup>
-                </select></div><button class="btn btn-primary btn-lg d-block w-100" type="submit">Search Hotels</button>
             </form>
         </div>
     </section>

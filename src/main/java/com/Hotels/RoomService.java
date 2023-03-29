@@ -14,13 +14,18 @@ public class RoomService {
         // connection object
         ConnectionDB db = new ConnectionDB();
 
+        RoomServlet roomservlet = new RoomServlet();
+        String hotelChainName= roomservlet.getHotelChainName();
+        String hotelAddress = roomservlet.getHotelAddress();
+
         // data structure to keep all hotelchains retrieved from database
         List<Room> rooms = new ArrayList<Room>();
 
         try (Connection con = db.getConnection()) {
             // prepare statement
             PreparedStatement stmt = con.prepareStatement(request);
-
+            stmt.setString(1,hotelAddress);
+            stmt.setString(2,hotelChainName);
             // get the results from executing the query
             ResultSet rs = stmt.executeQuery();
 

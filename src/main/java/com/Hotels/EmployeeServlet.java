@@ -13,7 +13,7 @@ import java.sql.*;
 @WebServlet("/addEmployee")
 public class EmployeeServlet extends HttpServlet {
 
-        public void init(ServletConfig config) {
+    public void init(ServletConfig config) {
         System.out.println("Servlet is being initialized");
     }
     @Override

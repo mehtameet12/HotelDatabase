@@ -29,9 +29,6 @@
     // empty session messages
     session.setAttribute("messages", new ArrayList<Message>());
 
-    // get all hotels from database
-
-
 
     //---------------------------------------
     // get all available rooms from the database for the current hotel chain and address
@@ -39,7 +36,7 @@
             "FROM hotelchainschema.rooms r " +
             "INNER JOIN hotelchainschema.hotels h ON r.hotelid = h.hotelid " +
             "INNER JOIN hotelchainschema.hotelchain hc ON h.name = hc.name " +
-            "WHERE r.status = true AND h.address = 'Ottawa' AND hc.name = 'Marriott'";
+            "WHERE r.status = true AND h.address = ? AND hc.name = ?";
     RoomService roomsevice = new RoomService();
     List<Room> rooms = null;
     try {
