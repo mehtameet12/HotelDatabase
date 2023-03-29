@@ -7,6 +7,8 @@ import jakarta.servlet.http.*;
 import java.io.IOException;
 import java.io.Writer;
 import java.sql.*;
+import java.util.List;
+
 @WebServlet("/room")
 public class RoomServlet extends HttpServlet {
     String hotelChainName;
@@ -18,8 +20,6 @@ public class RoomServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         hotelChainName = request.getParameter("hotelchainname");
         hotelAddress = request.getParameter("address");
-        System.out.println("Hotel Chain Name: " + hotelChainName);
-        System.out.println("Hotel Address: " + hotelAddress);
         ConnectionDB con = new ConnectionDB();
         try {
             con.getConnection();

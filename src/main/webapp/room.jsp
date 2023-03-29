@@ -32,15 +32,15 @@
 
     //---------------------------------------
     // get all available rooms from the database for the current hotel chain and address
-    String sql = "SELECT r.roomid, r.capacity, r.status, r.price, r.roomview, r.extension, r.damages, r.amenities, r.hotelid " +
-            "FROM hotelchainschema.rooms r " +
-            "INNER JOIN hotelchainschema.hotels h ON r.hotelid = h.hotelid " +
-            "INNER JOIN hotelchainschema.hotelchain hc ON h.name = hc.name " +
-            "WHERE r.status = true AND h.address = ? AND hc.name = ?";
-    RoomService roomsevice = new RoomService();
+//    String sql = "SELECT r.roomid, r.capacity, r.status, r.price, r.roomview, r.extension, r.damages, r.amenities, r.hotelid " +
+//            "FROM hotelchainschema.rooms r " +
+//            "INNER JOIN hotelchainschema.hotels h ON r.hotelid = h.hotelid " +
+//            "INNER JOIN hotelchainschema.hotelchain hc ON h.name = hc.name " +
+//            "WHERE r.status = true AND h.address = 'Ottawa' AND hc.name = 'Marriott'";
+    RoomService roomservice = new RoomService();
     List<Room> rooms = null;
     try {
-        rooms = roomsevice.getRoomService(sql);
+        rooms = roomservice.availableRooms();
     } catch (Exception e) {
         e.printStackTrace();
     }
