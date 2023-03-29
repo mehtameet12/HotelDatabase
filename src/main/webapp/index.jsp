@@ -38,10 +38,10 @@
             <div class="heading">
                 <h2>SEARCH FOR HOTELS</h2>
             </div>
-            <form>
+            <form action="/HotelDatabase/roomSearch" method="post">
                 <div class="mb-3">
 
-                    <form  action="/HotelDatabase/room" method="post">
+                    <form  >
                         <div class="mb-3"><label class="form-label" for="hotelchainname">Select Hotel Chain</label><select class="form-select" id="hotelchainname" name="hotelchainname">
                             <optgroup label="Hotel Chains">
                                 <option value="Marriott" selected="">Marriott</option>
@@ -51,7 +51,7 @@
                                 <option value="4Seasons">4 Seasons</option>
                             </optgroup>
                         </select></div>
-                        <div class="mb-3"><label class="form-label" for="address">Location</label><select class="form-select" id="address" name="address">
+                        <div class="mb-3"><label class="form-label" for="address">Location</label><select class="form-select" id="address" name="address" >
                             <optgroup label="Cities">
                                 <option value="Ottawa" selected="">Ottawa</option>
                                 <option value="Toronto">Toronto</option>
@@ -83,11 +83,11 @@
                         </select></div>
                         <div class="mb-3">
                             <div class="row">
-                                <div class="col-md-6"><label class="form-label" for="hire-date">From</label><input class="form-control" id="hire-date" type="date"></div>
-                                <div class="col-md-6 button"><label class="form-label" for="hire-date">To</label><input class="form-control" id="hire-date-1" type="date"></div>
+                                <div class="col-md-6"><label class="form-label" for="hire-date">From</label><input class="form-control" id="hire-date" type="date" name="fromdate"></div>
+                                <div class="col-md-6 button"><label class="form-label" for="hire-date">To</label><input class="form-control" id="hire-date-1" type="date" name="todate"></div>
                             </div>
                         </div>
-                        <div class="mb-3"><label class="form-label" for="stars">Hotel Category</label><select class="form-select" id="stars">
+                        <div class="mb-3"><label class="form-label" for="stars">Hotel Category</label><select class="form-select" id="stars" name="category">
                             <optgroup label="Star Hotels">
                                 <option value="1" selected="">1 Star</option>
                                 <option value="2">2 Star</option>
@@ -96,14 +96,14 @@
                                 <option value="5">5 Star</option>
                             </optgroup>
                         </select></div>
-                        <div class="mb-3"><label class="form-label" for="price">Price</label><select class="form-select" id="price">
+                        <div class="mb-3"><label class="form-label" for="price">Price</label><select class="form-select" id="price" name="price">
                             <optgroup label="$CAD">
-                                <option value="12" selected="">Less than 30</option>
-                                <option value="13">30 to 60</option>
-                                <option value="14">More than 60</option>
+                                <option value="less than 30" selected="">Less than 30</option>
+                                <option value="30 to 60">30 to 60</option>
+                                <option value="more than 60">More than 60</option>
                             </optgroup>
                         </select></div>
-                        <div class="mb-3"><label class="form-label" for="view">Room View</label><select class="form-select" id="view">
+                        <div class="mb-3"><label class="form-label" for="view">Room View</label><select class="form-select" id="view" name="roomview">
                             <optgroup label="View">
                                 <option value="Mountain view" selected="">Mountain view</option>
                                 <option value="Sea view">Sea view</option>
@@ -111,7 +111,7 @@
                                 <option value="Garden view">Garden view</option>
                             </optgroup>
                         </select></div>
-                        <div class="mb-3"><label class="form-label" for="capacity">Capacity</label><select class="form-select" id="capacity">
+                        <div class="mb-3"><label class="form-label" for="capacity">Capacity</label><select class="form-select" id="capacity" name="capacity">
                             <optgroup label="Room Capacity">
                                 <option value="2" selected="">2</option>
                                 <option value="3">3</option>
@@ -120,7 +120,7 @@
                                 <option value="6">6</option>
                             </optgroup>
                         </select></div>
-                        <a class="btn btn-primary btn-lg d-block w-100" id="show-btn"  type="submit" href="room.jsp">Search Rooms</a>
+                        <button class="btn btn-primary btn-lg d-block w-100" id="show-btn"  type="submit" >Search Rooms</button>
                     </form>
                 </div>
             </form>

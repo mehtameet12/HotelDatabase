@@ -33,7 +33,6 @@ public class CustomerServlet extends HttpServlet {
         }
         try {
             con.insertCustomer(Integer.valueOf(customerSIN), customerName, customerAddress, entryDate );
-            System.out.println("Successfull");
             con.close();
             response.sendRedirect("index.jsp");
         } catch (Exception e) {
