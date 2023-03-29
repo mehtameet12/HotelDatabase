@@ -2,7 +2,7 @@
   Created by IntelliJ IDEA.
   User: Anisaftab
   Date: 2023-03-27
-  Time: 3:25 p.m.
+  Time: 3:24 p.m.
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -34,25 +34,35 @@
     </div>
 </nav>
 <main class="page contact-page">
+
+
     <section class="portfolio-block contact">
-        <div class="container" style="margin-bottom: 5px;">
-            <div class="heading"></div>
-            <form style="margin-top: 10px;" action="/HotelDatabase/addEmployee" method="post">
-                <h2>EMPLOYEE INFO</h2>
+        <div class="container">
+            <div class="heading">
+                <h2>Update Employee</h2>
+            </div>
+            <form action="/HotelDatabase/updateEmployee" method="post">
+                <div class="mb-3"><label class="form-label" >Employee SIN</label><input class="form-control item" type="number" name="empid"></div>
                 <div class="mb-3"><label class="form-label" >Employee Name</label><input class="form-control item" type="text" name="name"></div>
-                <div class="mb-3"><label class="form-label" >SIN No.</label><input class="form-control item" type="number" name="sin"></div>
                 <div class="mb-3"><label class="form-label" >Address</label><input class="form-control item" type="text" name="address"></div>
-                <div class="mb-3"><label class="form-label" >Role</label><select class="form-select" name="role">
+                <div class="mb-3"><label class="form-label" >Role</label><select class="form-select" name="emprole">
                     <optgroup label="Select Roles">
                         <option value="Housekeeping" >Housekeeping</option>
                         <option value="Maintenance">Maintenance</option>
                         <option value="Front Desk">Front Desk</option>
                     </optgroup>
                 </select></div>
-                <div class="mb-3"><button class="btn btn-primary btn-lg d-block w-100" type="submit">Add Employee</button></div>
+                <div class="mb-3"><label class="form-label" >Hotel</label><input class="form-control item" type="number" name="hotelid"></div>
+                <div class="mb-3"><button class="btn btn-primary btn-lg d-block w-100" type="submit">Update Employee</button></div>
             </form>
-            <form style="margin-top: 10px;" action="/HotelDatabase/addRoom" method="post">
-                <h2>ADD ROOM</h2>
+        </div>
+    </section>
+    <section class="portfolio-block contact">
+        <div class="container">
+            <div class="heading">
+                <h2>Update Room</h2>
+            </div>
+            <form action="/HotelDatabase/updateRoom" method="post">
                 <div class="mb-3"><label class="form-label" >Hotel-ID</label><input class="form-control" type="number" name="hotelid"></div>
                 <div class="mb-3"><label class="form-label" >Room No.</label><input class="form-control item" type="number"  name="roomid"></div>
                 <div class="mb-3"><label class="form-label" >Capacity</label><select class="form-select" name="capacity">
@@ -81,11 +91,24 @@
                         <option value="false">No</option>
                     </optgroup>
                 </select></div>
+                <div class="mb-3"><label class="form-label" >Room Availability</label><select class="form-select"name="status" >
+                    <optgroup label="Room available">
+                        <option value="true" selected="">Yes</option>
+                        <option value="false">No</option>
+                    </optgroup>
+                </select></div>
                 <div class="mb-3"><label class="form-label" >Problems/Damages</label><input class="form-control item" type="text" name="damages" id="subject-13" style="height: 75px;"></div>
-                <button class="btn btn-primary btn-lg d-block w-100" type="submit">Add Room</button>
+                <div class="mb-3"><button class="btn btn-primary btn-lg d-block w-100" type="submit">Update Room</button></div>
             </form>
-            <form style="margin-top: 10px;" action="/HotelDatabase/addHotel" method="post">
-                <h2>ADD HOTEL</h2>
+        </div>
+    </section>
+    <section class="portfolio-block contact">
+        <div class="container">
+            <div class="heading">
+                <h2>Update Hotel</h2>
+            </div>
+            <form style="margin-top: 10px;" action="/HotelDatabase/updateHotel" method="post">
+                <div class="mb-3"><label class="form-label" >Hotel-ID</label><input class="form-control" type="number" name="hotelid"></div>
                 <div class="mb-3"><label class="form-label">Select Hotel Chain</label><select class="form-select" id="subject-7" name ="name">
                     <optgroup label="Hotel Chains">
                         <option value="Mariott" selected="">Mariott</option>
@@ -106,10 +129,11 @@
                     </optgroup>
                 </select></div>
                 <div class="mb-3"><label class="form-label" >Total No. of Rooms</label><input class="form-control item" type="number"  min="8" name="totalrooms"></div>
-                <div class="mb-3"></div><button class="btn btn-primary btn-lg d-block w-100" type="submit">Add Hotel</button>
+                <div class="mb-3"></div><button class="btn btn-primary btn-lg d-block w-100" type="submit">Update Hotel</button>
             </form>
         </div>
     </section>
+
 </main>
 <footer class="page-footer" style="height: 100px;">
     <div class="container">
@@ -120,6 +144,7 @@
 <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 <script src="assets/js/pikaday.min.js"></script>
 <script src="assets/js/theme.js"></script>
+
 </body>
 
 </html>

@@ -26,8 +26,10 @@
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
                 <li class="nav-item"><a class="nav-link active" href="#">Booking/Check-in</a></li>
-                <li class="nav-item"><a class="nav-link" href="addcustomer.jsp">Manage Customer</a></li>
-                <li class="nav-item"><a class="nav-link" href="manage.jsp">Manage Hotel</a></li>
+                <li class="nav-item"><a class="nav-link" href="addcustomer.jsp">Manage Customers</a></li>
+                <li class="nav-item"><a class="nav-link" href="manage.jsp">Add Services</a></li>
+                <li class="nav-item"><a class="nav-link" href="updateservices.jsp">Update Services</a></li>
+                <li class="nav-item"><a class="nav-link" href="removeservices.jsp">Remove Services</a></li>
             </ul>
         </div>
     </div>
