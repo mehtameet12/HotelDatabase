@@ -62,7 +62,7 @@ public class RoomService {
         }
     }
 
-    public List<Room> availableRooms ( String hotelChainName, String hotelAddress) throws Exception
+    public List<Room> availableRooms (String hotelChainName, String hotelAddress) throws Exception
     {
 //        hotelChainName = request.getParameter("hotelchainname");
 //        hotelAddress = request.getParameter("address");

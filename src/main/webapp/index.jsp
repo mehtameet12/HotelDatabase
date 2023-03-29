@@ -120,7 +120,7 @@
                                 <option value="6">6</option>
                             </optgroup>
                         </select></div>
-                        <button class="btn btn-primary btn-lg d-block w-100" id="show-btn"  type="submit" href="room.jsp">Search Rooms</button>
+                        <a class="btn btn-primary btn-lg d-block w-100" id="show-btn"  type="submit" href="room.jsp">Search Rooms</a>
                     </form>
                 </div>
             </form>

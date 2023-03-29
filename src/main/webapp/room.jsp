@@ -40,7 +40,9 @@
     RoomService roomservice = new RoomService();
     List<Room> rooms = null;
     try {
-        rooms = roomservice.availableRooms();
+        String hotelChainName = request.getParameter("hotelchainname");
+        String hotelAddress = request.getParameter("address");
+        rooms = roomservice.availableRooms(hotelChainName,hotelAddress );
     } catch (Exception e) {
         e.printStackTrace();
     }

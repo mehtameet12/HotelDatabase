@@ -9,7 +9,7 @@ public class ConnectionDB {
     /* Database connection settings, change dbName, dbusername, dbpassword */
     private final String ipAddress = "127.0.0.1";
     private final String dbServerPort = "5432";
-    private final String dbName = "Hotel";
+    private final String dbName = "HotelUpdate";
     //dbName = "Hotel" for anis
     private final String dbusername = "postgres";
     private final String dbpassword = "Summer8393";
