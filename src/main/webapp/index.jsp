@@ -28,7 +28,6 @@
                 <li class="nav-item"><a class="nav-link active" href="#">Booking/Check-in</a></li>
                 <li class="nav-item"><a class="nav-link" href="addcustomer.jsp">Add Customer</a></li>
                 <li class="nav-item"><a class="nav-link" href="manage.jsp">Manage Hotel</a></li>
-                <li class="nav-item"><a class="nav-link" href="updateCustomer.jsp">Update Customer</a></li>
             </ul>
         </div>
     </div>

@@ -7,10 +7,10 @@ public class ConnectionDB {
     /* Database connection settings, change dbName, dbusername, dbpassword */
     private final String ipAddress = "127.0.0.1";
     private final String dbServerPort = "5432";
-    private final String dbName = "Hotel";
+    private final String dbName = "DataBF";
     //dbName = "Hotel" for anis
     private final String dbusername = "postgres";
-    private final String dbpassword = "anis0710";
+    private final String dbpassword = "Summer8393";
 
 
     private Connection con = null;
@@ -81,6 +81,18 @@ public class ConnectionDB {
         pstmt.setString(4, name);
         pstmt.executeUpdate();
     }
+
+    public void updateCustomer(int custId, String name, String address, Date entryDate) throws SQLException {
+        String sql = "UPDATE hotelchainschema.customer SET name=?, address=?, regdate=? WHERE custid=?";
+        PreparedStatement pstmt = con.prepareStatement(sql);
+        pstmt.setString(1, name);
+        pstmt.setString(2, address);
+        pstmt.setDate(3, entryDate);
+        pstmt.setInt(4, custId);
+        pstmt.executeUpdate();
+    }
+
+
 
 
 
