@@ -41,7 +41,7 @@
             <form>
                 <div class="mb-3">
 
-                    <form method="post" action="/HotelDatabase/room">
+                    <form  action="/HotelDatabase/room" method="post">
                         <div class="mb-3"><label class="form-label" for="hotelchainname">Select Hotel Chain</label><select class="form-select" id="hotelchainname" name="hotelchainname">
                             <optgroup label="Hotel Chains">
                                 <option value="Marriott" selected="">Marriott</option>
@@ -120,7 +120,7 @@
                                 <option value="6">6</option>
                             </optgroup>
                         </select></div>
-                        <a class="btn btn-primary btn-lg d-block w-100" id="show-btn" href="room.jsp">Search Rooms</a>
+                        <button class="btn btn-primary btn-lg d-block w-100" id="show-btn"  type="submit" >Search Rooms</button>
                     </form>
                 </div>
             </form>
