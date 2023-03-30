@@ -86,11 +86,11 @@
                         </select></div>
                         <div class="mb-3">
                             <div class="row">
-                                <div class="col-md-6"><label class="form-label" for="hire-date">From</label><input class="form-control" id="hire-date" type="date" name="fromdate"></div>
-                                <div class="col-md-6 button"><label class="form-label" for="hire-date">To</label><input class="form-control" id="hire-date-1" type="date" name="todate"></div>
+                                <div class="col-md-6"><label class="form-label" for="fromdate">From</label><input class="form-control" id="fromdate" type="date" name="fromdate"></div>
+                                <div class="col-md-6 button"><label class="form-label" for="todate">To</label><input class="form-control" id="todate" type="date" name="todate"></div>
                             </div>
                         </div>
-                        <div class="mb-3"><label class="form-label" for="stars">Hotel Category</label><select class="form-select" id="stars" name="category">
+                        <div class="mb-3"><label class="form-label" for="stars">Minimum Hotel Category</label><select class="form-select" id="stars" name="category">
                             <optgroup label="Star Hotels">
                                 <option value="1" selected="">1 Star</option>
                                 <option value="2">2 Star</option>
@@ -99,13 +99,11 @@
                                 <option value="5">5 Star</option>
                             </optgroup>
                         </select></div>
-                        <div class="mb-3"><label class="form-label" for="price">Price</label><select class="form-select" id="price" name="price">
-                            <optgroup label="$CAD">
-                                <option value="less than 30" selected="">Less than 30</option>
-                                <option value="30 to 60">30 to 60</option>
-                                <option value="more than 60">More than 60</option>
-                            </optgroup>
-                        </select></div>
+                        <div class="mb-3">
+                            <label class="form-label">Maximum Price</label>
+                            <input class="form-control item" type="text" name="price" placeholder="Enter price (1-100)"
+                                   pattern="^(?:100|[1-9][0-9]?|[0-9])$" min="1" max="100">
+                        </div>
                         <div class="mb-3"><label class="form-label" for="view">Room View</label><select class="form-select" id="view" name="roomview">
                             <optgroup label="View">
                                 <option value="Mountain view" selected="">Mountain view</option>
@@ -114,7 +112,7 @@
                                 <option value="Garden view">Garden view</option>
                             </optgroup>
                         </select></div>
-                        <div class="mb-3"><label class="form-label" for="capacity">Capacity</label><select class="form-select" id="capacity" name="capacity">
+                        <div class="mb-3"><label class="form-label" for="capacity">Minimum Capacity</label><select class="form-select" id="capacity" name="capacity">
                             <optgroup label="Room Capacity">
                                 <option value="2" selected="">2</option>
                                 <option value="3">3</option>

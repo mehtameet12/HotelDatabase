@@ -57,8 +57,26 @@ public class ConnectionDB {
         pstmt.executeUpdate();
     }
 
+    public void checkInCustomer(Integer custid, String name, String address, Date regdate, Integer roomId) throws SQLException {
+        String sql = "INSERT INTO hotelchainschema.customer (custid, name, address, regdate, roomId) VALUES (?, ?, ?, ?, ?)";
+        PreparedStatement pstmt = con.prepareStatement(sql);
+        pstmt.setInt(1, custid);
+        pstmt.setString(2, name);
+        pstmt.setString(3, address);
+        pstmt.setDate(4, regdate);
+        pstmt.setInt(5, roomId);
+        pstmt.executeUpdate();
+
+        String roomUpdateQuery = "UPDATE hotelchainschema.rooms SET status=false WHERE roomid=?";
+        PreparedStatement pstmt2 = con.prepareStatement(roomUpdateQuery);
+        pstmt2.setInt(1,roomId);
+        pstmt2.executeUpdate();
+    }
+
+
     public void insertRoom(Integer roomid, Integer capacity, Boolean status, Integer price, String roomview, Boolean extension, String damages, String[] amenitiesArr, Integer hotelid) throws SQLException {
         Array amenities = con.createArrayOf("VARCHAR", amenitiesArr);
+
         String sql = "INSERT INTO hotelchainschema.rooms (roomid, capacity, status, price, roomview, extension, damages, amenities , hotelid) VALUES (?, ?, ?, ?,?, ?, ?, ?,? )";
         PreparedStatement pstmt = con.prepareStatement(sql);
         pstmt.setInt(1, roomid);
