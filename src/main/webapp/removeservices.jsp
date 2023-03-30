@@ -38,14 +38,13 @@
     <section class="portfolio-block contact">
         <div class="container">
             <div class="heading">
-                <h2>Add Customer</h2>
+                <h2>Remove Employee</h2>
             </div>
-            <form action="/HotelDatabase/customer" method="post">
-                <div class="mb-3"><label class="form-label" >Customer Name</label><input class="form-control item" type="text" name="name"></div>
-                <div class="mb-3"><label class="form-label" >Address</label><input class="form-control item" type="text" name="address"></div>
-                <div class="mb-3"><label class="form-label" >SIN</label><input class="form-control item" type="tel" name="sin"></div>
+            <form action="/HotelDatabase/removeEmployee" method="post">
 
-                <div class="mb-3"><button class="btn btn-primary btn-lg d-block w-100" type="submit">Add Customer</button></div>
+                <div class="mb-3"><label class="form-label" >Employee SIN</label><input class="form-control item" type="number" name="sin"></div>
+
+                <div class="mb-3"><button class="btn btn-primary btn-lg d-block w-100" type="submit">Remove Employee</button></div>
             </form>
         </div>
     </section>
@@ -53,24 +52,23 @@
     <section class="portfolio-block contact">
         <div class="container">
             <div class="heading">
-                <h2>Update Customer</h2>
+                <h2>Remove Hotel Room</h2>
             </div>
-            <form action="/HotelDatabase/updateCustomer" method="post">
-                <div class="mb-3"><label class="form-label" >Customer SIN</label><input class="form-control item" type="tel" name="custid"></div>
-                <div class="mb-3"><label class="form-label" >Customer Name</label><input class="form-control item" type="text" name="name"></div>
-                <div class="mb-3"><label class="form-label" >Address</label><input class="form-control item" type="text" name="address"></div>
-                <div class="mb-3"><button class="btn btn-primary btn-lg d-block w-100" type="submit">Update Customer</button></div>
+            <form action="/HotelDatabase/removeRoom" method="post">
+                <div class="mb-3"><label class="form-label" >Hotel-ID</label><input class="form-control" type="number" name="hotelid"></div>
+                <div class="mb-3"><label class="form-label" >Room No.</label><input class="form-control item" type="number"  name="roomid"></div>
+                <div class="mb-3"><button class="btn btn-primary btn-lg d-block w-100" type="submit">Remove Room</button></div>
             </form>
         </div>
     </section>
     <section class="portfolio-block contact">
         <div class="container">
             <div class="heading">
-                <h2>Remove Customer</h2>
+                <h2>Remove Hotel</h2>
             </div>
-            <form action="/HotelDatabase/removeCustomer" method="post">
-                <div class="mb-3"><label class="form-label" >Customer SIN</label><input class="form-control item" type="number" name="custid"></div>
-                <div class="mb-3"><button class="btn btn-primary btn-lg d-block w-100" type="submit">Remove Customer</button></div>
+            <form action="/HotelDatabase/removeHotel" method="post">
+                <div class="mb-3"><label class="form-label" >Hotel-ID</label><input class="form-control" type="number" name="hotelid"></div>
+                <div class="mb-3"><button class="btn btn-primary btn-lg d-block w-100" type="submit">Remove Hotel</button></div>
             </form>
         </div>
     </section>

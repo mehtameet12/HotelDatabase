@@ -34,9 +34,9 @@ public class CustomerServlet extends HttpServlet {
         try {
             con.insertCustomer(Integer.valueOf(customerSIN), customerName, customerAddress, entryDate );
             con.close();
-            response.sendRedirect("index.jsp");
+            response.sendRedirect("success.jsp");
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            response.sendRedirect("fail.jsp");
         }
     }
 

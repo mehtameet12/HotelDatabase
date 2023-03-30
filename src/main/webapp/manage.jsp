@@ -40,6 +40,7 @@
             <form style="margin-top: 10px;" action="/HotelDatabase/addEmployee" method="post">
                 <h2>EMPLOYEE INFO</h2>
                 <div class="mb-3"><label class="form-label" >Employee Name</label><input class="form-control item" type="text" name="name"></div>
+                <div class="mb-3"><label class="form-label" >Hotel-ID</label><input class="form-control" type="number" name="hotelid"></div>
                 <div class="mb-3"><label class="form-label" >SIN No.</label><input class="form-control item" type="number" name="sin"></div>
                 <div class="mb-3"><label class="form-label" >Address</label><input class="form-control item" type="text" name="address"></div>
                 <div class="mb-3"><label class="form-label" >Role</label><select class="form-select" name="role">
