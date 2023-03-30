@@ -12,7 +12,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Contact - Brand</title>
+    <title>Book Your Dream Vacation</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700&amp;display=swap">
     <link rel="stylesheet" href="assets/css/pikaday.min.css">
@@ -20,10 +20,13 @@
 
 <body>
 <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-white portfolio-navbar gradient">
-    <div class="container"><a class="navbar-brand logo" href="#">Pentago</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navbarNav"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+    <div class="container"><a class="navbar-brand logo" href="index.jsp">Pentago</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navbarNav"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item"><a class="nav-link" href="index.jsp">Home</a></li>
+
+
+
                 <li class="nav-item"><a class="nav-link active" href="index.jsp">Booking/Check-in</a></li>
                 <li class="nav-item"><a class="nav-link" href="addcustomer.jsp">Manage Customers</a></li>
                 <li class="nav-item"><a class="nav-link" href="manage.jsp">Add Services</a></li>
@@ -35,6 +38,7 @@
     </div>
 </nav>
 <main class="page contact-page">
+
     <section class="portfolio-block contact">
         <div class="container">
             <div class="heading">
