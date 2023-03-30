@@ -81,48 +81,70 @@
 </nav>
 <section class="portfolio-block contact">
     <input type="hidden" name="message" id="message" value='<%=msgField%>' >
-    <div class="container">
+    <div class="container" >
         <div class="row" id="row">
             <div class="col-md-12">
-                <div class="card" id="card-container">
-                    <div class="card-body" id="card">
+                <div class="" id="card-container">
+                    <div class="body" id="card">
                         <% if (rooms.size() == 0) { %>
-                        <h2 style="margin-top: 5rem;">No such rooms found, please change your search criteria!</h2>
+                        <h3 style="margin-top: 5rem;">No such rooms found, please change your search criteria!</h3>
                         <% } else { %>
                         <div class="table-responsive">
-                            <table class="table">
-                                <thead>
-                                <tr>
-                                    <th>Room ID</th>
-                                    <th>Capacity</th>
-                                    <th>Status</th>
-                                    <th>Price</th>
-                                    <th>Room View</th>
-                                    <th>Extension</th>
-                                    <th>Damages</th>
-                                    <th>Amenities</th>
-                                    <th>Hotel ID</th>
-                                    <th></th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <%
-                                for (Room room : rooms) { %>
-                                <tr>
-                                    <td><%= room.getRoomid() %></td>
-                                    <td><%= room.getCapacity() %></td>
-                                    <td><%= room.getStatus() %></td>
-                                    <td><%= room.getPrice() %></td>
-                                    <td><%= room.getRoomview() %></td>
-                                    <td><%= room.getExtension() %></td>
-                                    <td><%= room.getDamages() %></td>
-                                    <td><%= room.getAmenities() %></td>
-                                    <td><%= room.getHotelid() %></td>
-                                </tr>
-                                <% } %>
-                                </tbody>
-                            </table>
+                            <form action="/HotelDatabase/checkInCustomer" method="post">
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th>Select</th>
+                                        <th>Room ID</th>
+                                        <th>Capacity</th>
+                                        <th>Status</th>
+                                        <th>Price</th>
+                                        <th>Room View</th>
+                                        <th>Extension</th>
+                                        <th>Damages</th>
+                                        <th>Amenities</th>
+                                        <th>Hotel ID</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <%
+                                        for (Room room : rooms) {
+                                    %>
+                                    <tr>
+                                        <td><input type="radio" name="selectedRoomId" value="<%= room.getRoomid() %>"></td>
+                                        <td><%= room.getRoomid() %></td>
+                                        <td><%= room.getCapacity() %></td>
+                                        <td><%= room.getStatus() %></td>
+                                        <td><%= room.getPrice() %></td>
+                                        <td><%= room.getRoomview() %></td>
+                                        <td><%= room.getExtension() %></td>
+                                        <td><%= room.getDamages() %></td>
+                                        <td><%= room.getAmenities() %></td>
+                                        <td><%= room.getHotelid() %></td>
+                                    </tr>
+                                    <% } %>
+                                    </tbody>
+                                </table>
+                                <div class="container">
+                                    <h3>Customer Information</h3>
+                                    <div class="mb-3">
+                                        <label class="form-label">Customer Name</label>
+                                        <input class="form-control" type="text" name="customerName">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Address</label>
+                                        <input class="form-control" type="text" name="customerAddress">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">SIN</label>
+                                        <input class="form-control" type="text" name="customerSIN">
+                                    </div>
+                                    <input type="hidden" name="selectedRoomId" id="selectedRoomId">
+                                    <button type="submit" class="btn btn-primary">Check-In</button>
+                                </div>
+                            </form>
                         </div>
+
                         <% } %>
                     </div>
                 </div>
@@ -130,6 +152,8 @@
         </div>
     </div>
 </section>
+
+
 
     <script>
         function setModalFields(row) {
