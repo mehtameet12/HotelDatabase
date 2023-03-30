@@ -79,29 +79,18 @@ public class RoomService {
         if (hotelAddress != null && !hotelAddress.isEmpty()) {
             query += "AND h.address = '" + hotelAddress + "' ";
         }
+        if (roomView != null && !roomView.isEmpty()) {
+            query += "AND r.roomview = '" + roomView + "' ";
+        }
         if (hotelCategory != null && !hotelCategory.isEmpty()) {
-            query += "AND h.category = " + Integer.parseInt(hotelCategory) + " ";
+            query += "AND h.category >= " + Integer.parseInt(hotelCategory) + " ";
         }
         if (roomCapacity != null && !roomCapacity.isEmpty()) {
             query += "AND r.capacity >= " + Integer.parseInt(roomCapacity) + " ";
         }
-        if (roomView != null && !roomView.isEmpty()) {
-            query += "AND r.roomview = '" + roomView + "' ";
-        }
         if (roomPrice != null && !roomPrice.isEmpty()) {
             query += "AND r.price <= " + Integer.parseInt(roomPrice) + " ";
         }
-
-
-
-        // sql query
-//        String query = "SELECT r.roomid, r.capacity, r.status, r.price, r.roomview, r.extension, r.damages, r.amenities, r.hotelid " +
-//                "FROM hotelchainschema.rooms r " +
-//                "INNER JOIN hotelchainschema.hotels h ON r.hotelid = h.hotelid " +
-//                "INNER JOIN hotelchainschema.hotelchain hc ON h.name = hc.name " +
-//                "WHERE r.status = true AND h.address = ? AND hc.name = ?";
-
-
 
         // connection object
         ConnectionDB db = new ConnectionDB();
@@ -112,8 +101,6 @@ public class RoomService {
         try (Connection con = db.getConnection()) {
             // prepare statement
             PreparedStatement stmt = con.prepareStatement(query);
-//            stmt.setString(1,hotelAddress);
-//            stmt.setString(2,hotelChainName);
 
             // get the results from executing the query
             ResultSet rs = stmt.executeQuery();
@@ -148,13 +135,5 @@ public class RoomService {
         }
 
     }
-
-    public void setHotelChainName (String hotelChainName){
-        this.hotelChainName = hotelChainName;
-    }
-    public void setHotelAddress(String hotelAddress){
-        this.hotelAddress = hotelAddress;
-    }
-
 
 }

@@ -30,11 +30,9 @@
     // empty session messages
     session.setAttribute("messages", new ArrayList<Message>());
 
-
     //---------------------------------------
 
     RoomService roomService = new RoomService();
-    RoomServlet roomServlet = new RoomServlet();
     List<Room> rooms = null;
     try {
         String hotelAddress = (String) request.getAttribute("hotelAddress");
@@ -43,11 +41,8 @@
         String endDate = (String) request.getAttribute("todate");
         String category = (String) request.getAttribute("category");
         String price = (String) request.getAttribute("price");
-        //Integer category = Integer.valueOf(request.getParameter("category"));
-        //Integer price = Integer.valueOf(request.getParameter("price"));
         String roomView = (String) request.getAttribute("roomview");
         String capacity = (String) request.getAttribute("capacity");
-        //Integer capacity = Integer.valueOf(request.getParameter("capacity"));
 
         rooms = roomService.availableRooms(request, hotelAddress, hotelChainName, category, capacity, roomView, price);
     } catch (Exception e) {
@@ -76,10 +71,10 @@
     <div class="container"><a class="navbar-brand logo" href="index.jsp">Pentago</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navbarNav"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="index.jsp">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="index.jsp">Booking/Check-in</a></li>
+                <li class="nav-item"><a class="nav-link active" href="index.jsp">Home</a></li>
+                <li class="nav-item"><a class="nav-link active" href="index.jsp">Booking/Check-in</a></li>
                 <li class="nav-item"><a class="nav-link active" href="addcustomer.jsp">Add Customer</a></li>
-                <li class="nav-item"><a class="nav-link" href="manage.jsp">Manage Hotel</a></li>
+                <li class="nav-item"><a class="nav-link active" href="manage.jsp">Manage Hotel</a></li>
             </ul>
         </div>
     </div>
