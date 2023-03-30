@@ -10,7 +10,7 @@ public class ConnectionDB {
     private final String dbName = "DataBF";
     //dbName = "Hotel" for anis
     private final String dbusername = "postgres";
-    private final String dbpassword = "Summer8393";
+    private final String dbpassword = "anis0710";
 
 
     private Connection con = null;

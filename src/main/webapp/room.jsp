@@ -67,18 +67,8 @@
 </head>
 
 <body>
-<nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-white portfolio-navbar gradient">
-    <div class="container"><a class="navbar-brand logo" href="index.jsp">Pentago</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navbarNav"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link active" href="index.jsp">Home</a></li>
-                <li class="nav-item"><a class="nav-link active" href="index.jsp">Booking/Check-in</a></li>
-                <li class="nav-item"><a class="nav-link active" href="addcustomer.jsp">Add Customer</a></li>
-                <li class="nav-item"><a class="nav-link active" href="manage.jsp">Manage Hotel</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
+<jsp:include page="navbar.jsp"></jsp:include>
+
 <section class="portfolio-block contact">
     <input type="hidden" name="message" id="message" value='<%=msgField%>' >
     <div class="container" >
