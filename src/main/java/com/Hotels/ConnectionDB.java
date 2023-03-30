@@ -148,12 +148,16 @@ public class ConnectionDB {
     public void removeHotel(Integer hotelID) throws SQLException {
         String sql2 = "DELETE FROM hotelchainschema.rooms WHERE hotelid=?";
         String sql3 = "DELETE FROM hotelchainschema.employee WHERE hotelid=?";
+        String sql4 = "DELETE FROM hotelchainschema.manager WHERE hotelid=?";
+
         PreparedStatement pstmt2 = con.prepareStatement(sql2);
         PreparedStatement pstmt3 = con.prepareStatement(sql3);
+        PreparedStatement pstmt4 = con.prepareStatement(sql4);
         pstmt2.setInt(1,hotelID);
         pstmt3.setInt(1,hotelID);
         pstmt2.executeUpdate();
         pstmt3.executeUpdate();
+        pstmt4.executeUpdate();
         String sql = "DELETE FROM hotelchainschema.hotels WHERE hotelid=? ";
 
         PreparedStatement pstmt = con.prepareStatement(sql);
