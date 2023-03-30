@@ -24,7 +24,8 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item"><a class="nav-link" href="index.jsp">Home</a></li>
-                <li class="nav-item"><a class="nav-link active" href="index.jsp">Booking/Check-in</a></li>
+                <li class="nav-item"><a class="nav-link active" href="index.jsp">Booking</a></li>
+                <li class="nav-item"><a class="nav-link" href="checkin.jsp">Check-in</a></li>
                 <li class="nav-item"><a class="nav-link" href="addcustomer.jsp">Manage Customers</a></li>
                 <li class="nav-item"><a class="nav-link" href="manage.jsp">Add Services</a></li>
                 <li class="nav-item"><a class="nav-link" href="updateservices.jsp">Update Services</a></li>
@@ -42,7 +43,7 @@
                 <h2>Update Employee</h2>
             </div>
             <form action="/HotelDatabase/updateEmployee" method="post">
-                <div class="mb-3"><label class="form-label" >Employee SIN</label><input class="form-control item" type="number" name="empid"></div>
+                <div class="mb-3"><label class="form-label" >Employee SIN</label><input class="form-control item" type="number" name="empid" required></div>
                 <div class="mb-3"><label class="form-label" >Employee Name</label><input class="form-control item" type="text" name="name"></div>
                 <div class="mb-3"><label class="form-label" >Address</label><input class="form-control item" type="text" name="address"></div>
                 <div class="mb-3"><label class="form-label" >Role</label><select class="form-select" name="emprole">
@@ -63,8 +64,8 @@
                 <h2>Update Room</h2>
             </div>
             <form action="/HotelDatabase/updateRoom" method="post">
-                <div class="mb-3"><label class="form-label" >Hotel-ID</label><input class="form-control" type="number" name="hotelid"></div>
-                <div class="mb-3"><label class="form-label" >Room No.</label><input class="form-control item" type="number"  name="roomid"></div>
+                <div class="mb-3"><label class="form-label" >Hotel-ID</label><input class="form-control" type="number" name="hotelid" required></div>
+                <div class="mb-3"><label class="form-label" >Room No.</label><input class="form-control item" type="number"  name="roomid" required></div>
                 <div class="mb-3"><label class="form-label" >Capacity</label><select class="form-select" name="capacity">
                     <optgroup label="Input Capacity">
                         <option value="2" selected="">2</option>
@@ -108,7 +109,7 @@
                 <h2>Update Hotel</h2>
             </div>
             <form style="margin-top: 10px;" action="/HotelDatabase/updateHotel" method="post">
-                <div class="mb-3"><label class="form-label" >Hotel-ID</label><input class="form-control" type="number" name="hotelid"></div>
+                <div class="mb-3"><label class="form-label" >Hotel-ID</label><input class="form-control" type="number" name="hotelid" required></div>
                 <div class="mb-3"><label class="form-label">Select Hotel Chain</label><select class="form-select" id="subject-7" name ="name">
                     <optgroup label="Hotel Chains">
                         <option value="Mariott" selected="">Mariott</option>

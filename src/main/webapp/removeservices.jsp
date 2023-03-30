@@ -12,7 +12,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Book Your Dream Vacation</title>
+    <title>Contact - Brand</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700&amp;display=swap">
     <link rel="stylesheet" href="assets/css/pikaday.min.css">
@@ -20,18 +20,12 @@
 
 <body>
 <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-white portfolio-navbar gradient">
-    <div class="container"><a class="navbar-brand logo" href="index.jsp">Pentago</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navbarNav"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+    <div class="container"><a class="navbar-brand logo" href="#">Pentago</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navbarNav"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item"><a class="nav-link" href="index.jsp">Home</a></li>
-
                 <li class="nav-item"><a class="nav-link active" href="index.jsp">Booking</a></li>
                 <li class="nav-item"><a class="nav-link" href="checkin.jsp">Check-in</a></li>
-
-
-
-
-              
                 <li class="nav-item"><a class="nav-link" href="addcustomer.jsp">Manage Customers</a></li>
                 <li class="nav-item"><a class="nav-link" href="manage.jsp">Add Services</a></li>
                 <li class="nav-item"><a class="nav-link" href="updateservices.jsp">Update Services</a></li>
@@ -43,18 +37,16 @@
     </div>
 </nav>
 <main class="page contact-page">
-
     <section class="portfolio-block contact">
         <div class="container">
             <div class="heading">
-                <h2>Add Customer</h2>
+                <h2>Remove Employee</h2>
             </div>
-            <form action="/HotelDatabase/customer" method="post">
-                <div class="mb-3"><label class="form-label" >Customer Name</label><input class="form-control item" type="text" name="name" required></div>
-                <div class="mb-3"><label class="form-label" >Address</label><input class="form-control item" type="text" name="address" required></div>
-                <div class="mb-3"><label class="form-label" >SIN</label><input class="form-control item" type="tel" name="sin" required></div>
+            <form action="/HotelDatabase/removeEmployee" method="post">
 
-                <div class="mb-3"><button class="btn btn-primary btn-lg d-block w-100" type="submit">Add Customer</button></div>
+                <div class="mb-3"><label class="form-label" >Employee SIN</label><input class="form-control item" type="number" name="sin" required></div>
+
+                <div class="mb-3"><button class="btn btn-primary btn-lg d-block w-100" type="submit">Remove Employee</button></div>
             </form>
         </div>
     </section>
@@ -62,24 +54,25 @@
     <section class="portfolio-block contact">
         <div class="container">
             <div class="heading">
-                <h2>Update Customer</h2>
+                <h2>Remove Hotel Room</h2>
             </div>
-            <form action="/HotelDatabase/updateCustomer" method="post">
-                <div class="mb-3"><label class="form-label" >Customer SIN</label><input class="form-control item" type="tel" name="custid" required></div>
-                <div class="mb-3"><label class="form-label" >Customer Name</label><input class="form-control item" type="text" name="name"></div>
-                <div class="mb-3"><label class="form-label" >Address</label><input class="form-control item" type="text" name="address"></div>
-                <div class="mb-3"><button class="btn btn-primary btn-lg d-block w-100" type="submit">Update Customer</button></div>
+            <form action="/HotelDatabase/removeRoom" method="post">
+                <div class="mb-3"><label class="form-label" >Hotel-ID</label><input class="form-control" type="number" name="hotelid" required></div>
+                <div class="mb-3"><label class="form-label" >Room No.</label><input class="form-control item" type="number"  name="roomid" required></div>
+                <div class="mb-3"><button class="btn btn-primary btn-lg d-block w-100" type="submit">Remove Room</button></div>
             </form>
         </div>
     </section>
     <section class="portfolio-block contact">
         <div class="container">
             <div class="heading">
-                <h2>Remove Customer</h2>
+                <h2>Remove Hotel</h2>
+                <h5 style="color:red; ">CAUTION!<br> Removing a Hotel will remove all the data of<br> Employees And Rooms of the Hotel</h5>
             </div>
-            <form action="/HotelDatabase/removeCustomer" method="post">
-                <div class="mb-3"><label class="form-label" >Customer SIN</label><input class="form-control item" type="number" name="custid" required></div>
-                <div class="mb-3"><button class="btn btn-primary btn-lg d-block w-100" type="submit">Remove Customer</button></div>
+            <form action="/HotelDatabase/removeHotel" method="post">
+                <div class="mb-3"><label class="form-label" >Hotel-ID</label><input class="form-control" type="number" name="hotelid" required></div>
+
+                <div class="mb-3"><button class="btn btn-primary btn-lg d-block w-100" type="submit">Remove Hotel</button></div>
             </form>
         </div>
     </section>

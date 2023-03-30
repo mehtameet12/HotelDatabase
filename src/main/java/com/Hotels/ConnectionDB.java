@@ -36,13 +36,14 @@ public class ConnectionDB {
 
     }
 
-    public void insertEmployee(Integer empid, String name, String address, String emprole) throws SQLException {
-        String sql = "INSERT INTO hotelchainschema.employee (empid, name, address, emprole) VALUES (?, ?, ?, ?)";
+    public void insertEmployee(Integer empid, String name, String address, String emprole, Integer hotelId) throws SQLException {
+        String sql = "INSERT INTO hotelchainschema.employee (empid, name, address, emprole,hotelid) VALUES (?, ?, ?, ?,?)";
         PreparedStatement pstmt = con.prepareStatement(sql);
         pstmt.setInt(1, empid);
         pstmt.setString(2, name);
         pstmt.setString(3, address);
         pstmt.setString(4, emprole);
+        pstmt.setInt(5, hotelId);
         pstmt.executeUpdate();
     }
 
@@ -148,6 +149,49 @@ public class ConnectionDB {
         pstmt.executeUpdate();
     }
 
+    public void removeEmployee(Integer empId) throws SQLException {
+        String sql = "DELETE FROM hotelchainschema.employee WHERE empid=?";
+        PreparedStatement pstmt = con.prepareStatement(sql);
+        pstmt.setInt(1,empId);
+        pstmt.executeUpdate();
+    }
+
+    public void removeRoom(Integer hotelID, Integer roomID) throws SQLException {
+        String sql = "DELETE FROM hotelchainschema.rooms WHERE hotelid=? AND  roomId=?";
+        PreparedStatement pstmt = con.prepareStatement(sql);
+        pstmt.setInt(1,hotelID);
+        pstmt.setInt(2,roomID);
+        pstmt.executeUpdate();
+    }
+    public void removeHotel(Integer hotelID) throws SQLException {
+        String sql2 = "DELETE FROM hotelchainschema.rooms WHERE hotelid=?";
+        String sql3 = "DELETE FROM hotelchainschema.employee WHERE hotelid=?";
+        String sql4 = "DELETE FROM hotelchainschema.manager WHERE hotelid=?";
+
+        PreparedStatement pstmt2 = con.prepareStatement(sql2);
+        PreparedStatement pstmt3 = con.prepareStatement(sql3);
+        PreparedStatement pstmt4 = con.prepareStatement(sql4);
+        pstmt2.setInt(1,hotelID);
+        pstmt3.setInt(1,hotelID);
+        pstmt2.executeUpdate();
+        pstmt3.executeUpdate();
+        pstmt4.executeUpdate();
+        String sql = "DELETE FROM hotelchainschema.hotels WHERE hotelid=? ";
+
+        PreparedStatement pstmt = con.prepareStatement(sql);
+
+        pstmt.setInt(1,hotelID);
+
+        pstmt.executeUpdate();
+
+    }
+
+    public void removeCustomer(Integer custID) throws SQLException {
+        String sql = "DELETE FROM hotelchainschema.customer WHERE custid=?";
+        PreparedStatement pstmt = con.prepareStatement(sql);
+        pstmt.setInt(1,custID);
+        pstmt.executeUpdate();
+    }
 
     /**
      * Close database connection. It is very important to close the database connection
@@ -165,6 +209,9 @@ public class ConnectionDB {
         }
 
     }
+
+
+
 }
 
 

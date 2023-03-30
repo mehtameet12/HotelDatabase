@@ -34,10 +34,14 @@ public class NewHotelServlet extends HttpServlet {
         }
 
         try {
-             con.insertHotel(hotelCategory,hotelAddress, totalRooms,hotelChainName);
+            con.insertHotel(hotelCategory,hotelAddress, totalRooms,hotelChainName);
             con.close();
+            response.sendRedirect("success.jsp");
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+
+            response.sendRedirect("fail.jsp");
+        }catch (Exception f){
+            response.sendRedirect("fail.jsp");
         }
 
 

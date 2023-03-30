@@ -42,8 +42,11 @@ public class NewRoomServlet extends HttpServlet {
         try {
             con.insertRoom(roomID, capacity, status, price, roomView, extension, damages,amenities, hotelID);
             con.close();
+            response.sendRedirect("success.jsp");
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            response.sendRedirect("fail.jsp");
+        } catch (Exception f){
+            response.sendRedirect("fail.jsp");
         }
 
 

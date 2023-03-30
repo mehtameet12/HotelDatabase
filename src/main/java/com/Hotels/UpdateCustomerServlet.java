@@ -36,9 +36,9 @@ public class UpdateCustomerServlet extends HttpServlet {
             con.updateCustomer(Integer.valueOf(custId), customerName, customerAddress, entryDate );
             System.out.println("Successfull");
             con.close();
-            response.sendRedirect("index.jsp");
+            response.sendRedirect("success.jsp");
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            response.sendRedirect("fail.jsp");
         }
     }
     public void destroy() {

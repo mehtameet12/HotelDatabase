@@ -19,6 +19,7 @@ public class EmployeeServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String employeeName = request.getParameter("name");
+        Integer hotelID = Integer.valueOf(request.getParameter("hotelid"));
         String employeeSIN = request.getParameter("sin");
         String employeeAddress = request.getParameter("address");
         String employeeRole = request.getParameter("role");
@@ -33,10 +34,13 @@ public class EmployeeServlet extends HttpServlet {
         }
 
         try {
-            con.insertEmployee(Integer.valueOf(employeeSIN), employeeName, employeeAddress, employeeRole);
+            con.insertEmployee(Integer.valueOf(employeeSIN), employeeName, employeeAddress, employeeRole,hotelID);
             con.close();
+            response.sendRedirect("success.jsp");
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            response.sendRedirect("fail.jsp");
+        } catch (Exception f){
+            response.sendRedirect("fail.jsp");
         }
 
 

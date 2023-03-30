@@ -37,9 +37,9 @@ public class UpdateEmployeeServlet extends HttpServlet {
             con.updateEmployee(empId, employeeName, employeeAddress,employeeRole,hotelId );
             System.out.println("Successfull");
             con.close();
-            response.sendRedirect("updateservices.jsp");
+            response.sendRedirect("success.jsp");
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            response.sendRedirect("fail.jsp");
         }
     }
     public void destroy() {
