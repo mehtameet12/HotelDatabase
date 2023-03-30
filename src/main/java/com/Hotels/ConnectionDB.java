@@ -65,6 +65,11 @@ public class ConnectionDB {
         pstmt.setDate(4, regdate);
         pstmt.setInt(5, roomId);
         pstmt.executeUpdate();
+
+        String roomUpdateQuery = "UPDATE hotelchainschema.rooms SET status=false WHERE roomid=?";
+        PreparedStatement pstmt2 = con.prepareStatement(roomUpdateQuery);
+        pstmt2.setInt(1,roomId);
+        pstmt2.executeUpdate();
     }
 
     public void insertRoom(Integer roomid, Integer capacity, Boolean status, Integer price, String roomview, Boolean extension, String damages,String[] amenitiesArr, Integer hotelid) throws SQLException{
