@@ -40,7 +40,7 @@ public class RoomService {
                 Room room = new Room(
                         rs.getInt("roomid"),
                         rs.getInt("capacity"),
-                        rs.getBoolean("status"),
+                        rs.getString("status"),
                         rs.getInt("price"),
                         rs.getString("roomview"),
                         rs.getBoolean("extension"),
@@ -71,7 +71,7 @@ public class RoomService {
                 "FROM hotelchainschema.rooms r " +
                 "INNER JOIN hotelchainschema.hotels h ON r.hotelid = h.hotelid " +
                 "INNER JOIN hotelchainschema.hotelchain hc ON h.name = hc.name " +
-                "WHERE r.status = true ";
+                "WHERE r.status = 'Available' ";
 
         if (hotelChainName != null && !hotelChainName.isEmpty()) {
             query += "AND hc.name = '" + hotelChainName + "' ";
@@ -111,7 +111,7 @@ public class RoomService {
                 Room room = new Room(
                         rs.getInt("roomid"),
                         rs.getInt("capacity"),
-                        rs.getBoolean("status"),
+                        rs.getString("status"),
                         rs.getInt("price"),
                         rs.getString("roomview"),
                         rs.getBoolean("extension"),

@@ -3,7 +3,7 @@ package com.Hotels;
 public class Room {
     private Integer roomid;
     private Integer capacity;
-    private Boolean status;
+    private String status;
     private Integer price;
     private String roomview;
     private Boolean extension;
@@ -11,7 +11,7 @@ public class Room {
     private String amenities;
     private Integer hotelid;
 
-    public Room(Integer capacity, Boolean status, Integer price, String roomview, Boolean extension, String damages, String amenities, Integer hotelid) {
+    public Room(Integer capacity, String status, Integer price, String roomview, Boolean extension, String damages, String amenities, Integer hotelid) {
         this.capacity = capacity;
         this.status = status;
         this.price = price;
@@ -22,7 +22,7 @@ public class Room {
         this.hotelid = hotelid;
     }
 
-    public Room(Integer roomid, Integer capacity, Boolean status, Integer price, String roomview, Boolean extension, String damages, String amenities, Integer hotelid) {
+    public Room(Integer roomid, Integer capacity, String status, Integer price, String roomview, Boolean extension, String damages, String amenities, Integer hotelid) {
         this.roomid = roomid;
         this.capacity = capacity;
         this.status = status;
@@ -50,11 +50,11 @@ public class Room {
         this.capacity = capacity;
     }
 
-    public Boolean getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(Boolean status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
