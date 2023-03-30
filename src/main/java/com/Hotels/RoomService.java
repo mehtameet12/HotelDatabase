@@ -12,6 +12,8 @@ import java.util.List;
 public class RoomService {
     String hotelChainName;
     String hotelAddress;
+    int rowCount;
+    int totalCap;
     public List<Room> getRoomService(String r) throws Exception{
         // sql query
         String sql = "SELECT * FROM hotelchainschema.rooms";
@@ -92,19 +94,22 @@ public class RoomService {
             query += "AND r.price <= " + Integer.parseInt(roomPrice) + " ";
         }
 
-
         // connection object
         ConnectionDB db = new ConnectionDB();
+
 
         // data structure to keep all hotelchains retrieved from database
         List<Room> rooms = new ArrayList<Room>();
 
         try (Connection con = db.getConnection()) {
+
             // prepare statement
             PreparedStatement stmt = con.prepareStatement(query);
 
             // get the results from executing the query
             ResultSet rs = stmt.executeQuery();
+
+            //
 
             // iterate through the result set
             while (rs.next()) {
@@ -122,7 +127,11 @@ public class RoomService {
                 );
                 // append hotelchain in hotelchain list
                 rooms.add(room);
+                rowCount++;
+                totalCap = totalCap+ rs.getInt("capacity");
             }
+            System.out.println("The row is "+rowCount);
+            System.out.println("The total Cap is "+totalCap);
             // close result set
             rs.close();
             // close statement
@@ -135,6 +144,14 @@ public class RoomService {
             throw new Exception(e.getMessage());
         }
 
+    }
+
+    public int getRowCount() {
+        return rowCount;
+    }
+
+    public int getTotalCap() {
+        return totalCap;
     }
 
 }

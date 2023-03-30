@@ -33,7 +33,6 @@ public class Room {
         this.amenities = amenities;
         this.hotelid = hotelid;
     }
-
     public Integer getRoomid() {
         return roomid;
     }

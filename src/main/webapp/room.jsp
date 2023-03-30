@@ -34,6 +34,8 @@
 
     RoomService roomService = new RoomService();
     List<Room> rooms = null;
+    int totalRooms = 0;
+    int totalCap = 0;
     try {
         String hotelAddress = (String) request.getAttribute("hotelAddress");
         String hotelChainName = (String) request.getAttribute("hotelChainName");
@@ -45,6 +47,8 @@
         String capacity = (String) request.getAttribute("capacity");
 
         rooms = roomService.availableRooms(request, hotelAddress, hotelChainName, category, capacity, roomView, price);
+        totalRooms = roomService.getRowCount();
+        totalCap = roomService.getTotalCap();
     } catch (Exception e) {
         e.printStackTrace();
     }
@@ -111,6 +115,10 @@
                                     <% } %>
                                     </tbody>
                                 </table>
+                                <br>
+                                <h6>Total Rooms in the Area: <%= totalRooms %></h6>
+                                <h6>Total Capacity of all Rooms: <%= totalCap %></h6>
+                                <br>
                                 <div class="container">
                                     <h3>Customer Information</h3>
                                     <div class="mb-3">
