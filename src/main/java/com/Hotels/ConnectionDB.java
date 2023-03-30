@@ -10,7 +10,7 @@ public class ConnectionDB {
     private final String dbName = "DataBF";
     //dbName = "Hotel" for anis
     private final String dbusername = "postgres";
-    private final String dbpassword = "Summer8393";
+    private final String dbpassword = "anis0710";
 
 
     private Connection con = null;
@@ -72,23 +72,25 @@ public class ConnectionDB {
         pstmt2.executeUpdate();
     }
 
-    public void insertRoom(Integer roomid, Integer capacity, Boolean status, Integer price, String roomview, Boolean extension, String damages,String[] amenitiesArr, Integer hotelid) throws SQLException{
-        Array amenities = con.createArrayOf("VARCHAR",amenitiesArr);
+
+    public void insertRoom(Integer roomid, Integer capacity, Boolean status, Integer price, String roomview, Boolean extension, String damages, String[] amenitiesArr, Integer hotelid) throws SQLException {
+        Array amenities = con.createArrayOf("VARCHAR", amenitiesArr);
+
         String sql = "INSERT INTO hotelchainschema.rooms (roomid, capacity, status, price, roomview, extension, damages, amenities , hotelid) VALUES (?, ?, ?, ?,?, ?, ?, ?,? )";
         PreparedStatement pstmt = con.prepareStatement(sql);
-        pstmt.setInt(1,roomid);
-        pstmt.setInt(2,capacity);
-        pstmt.setBoolean(3,status);
+        pstmt.setInt(1, roomid);
+        pstmt.setInt(2, capacity);
+        pstmt.setBoolean(3, status);
         pstmt.setInt(4, price);
         pstmt.setString(5, roomview);
-        pstmt.setBoolean(6,extension);
-        pstmt.setString(7,damages);
+        pstmt.setBoolean(6, extension);
+        pstmt.setString(7, damages);
         pstmt.setArray(8, amenities);
-        pstmt.setInt(9,hotelid);
+        pstmt.setInt(9, hotelid);
         pstmt.executeUpdate();
     }
 
-    public void insertHotel(Integer category, String address, Integer totalrooms, String name) throws SQLException{
+    public void insertHotel(Integer category, String address, Integer totalrooms, String name) throws SQLException {
         String sql = "INSERT INTO hotelchainschema.hotels (category,address,totalrooms,name) VALUES (?, ?, ?, ?)";
         PreparedStatement pstmt = con.prepareStatement(sql);
         pstmt.setInt(1, category);
@@ -108,9 +110,43 @@ public class ConnectionDB {
         pstmt.executeUpdate();
     }
 
+    public void updateEmployee(Integer empId, String employeeName, String employeeAddress, String employeeRole, Integer hotelId) throws SQLException {
+        String sql = "UPDATE hotelchainschema.employee SET name=?, address=?, emprole=?, hotelid=? WHERE empid=?";
+        PreparedStatement pstmt = con.prepareStatement(sql);
+        pstmt.setString(1, employeeName);
+        pstmt.setString(2, employeeAddress);
+        pstmt.setString(3, employeeRole);
+        pstmt.setInt(4, hotelId);
+        pstmt.setInt(5, empId);
+        pstmt.executeUpdate();
+    }
 
+    public void updateRoom(Integer roomid, Integer capacity, Boolean status, Integer price, String roomview, Boolean extension, String damages, String[] amenitiesArr, Integer hotelid) throws SQLException {
+        Array amenities = con.createArrayOf("VARCHAR", amenitiesArr);
+        String sql = "UPDATE hotelchainschema.rooms SET capacity=?, status=?, price=?, roomview=?, extension=?, damages=? , amenities=? WHERE roomid=? AND hotelid=? ";
+        PreparedStatement pstmt = con.prepareStatement(sql);
+        pstmt.setInt(1, capacity);
+        pstmt.setBoolean(2, status);
+        pstmt.setInt(3, price);
+        pstmt.setString(4, roomview);
+        pstmt.setBoolean(5, extension);
+        pstmt.setString(6, damages);
+        pstmt.setArray(7, amenities);
+        pstmt.setInt(8, roomid);
+        pstmt.setInt(9, hotelid);
+        pstmt.executeUpdate();
+    }
 
-
+    public void updateHotel(Integer hotelCategory, String hotelAddress, Integer totalRooms, String hotelChainName, Integer hotelID) throws SQLException {
+        String sql = "UPDATE hotelchainschema.hotels SET category=?, address=?, totalrooms=?, name=? WHERE hotelid=?";
+        PreparedStatement pstmt = con.prepareStatement(sql);
+        pstmt.setInt(1, hotelCategory);
+        pstmt.setString(2, hotelAddress);
+        pstmt.setInt(3, totalRooms);
+        pstmt.setString(4, hotelChainName);
+        pstmt.setInt(5, hotelID);
+        pstmt.executeUpdate();
+    }
 
 
     /**
@@ -130,3 +166,5 @@ public class ConnectionDB {
 
     }
 }
+
+

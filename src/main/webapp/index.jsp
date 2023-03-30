@@ -24,10 +24,12 @@
     <div class="container"><a class="navbar-brand logo" href="#">Pentago</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navbarNav"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-                <li class="nav-item"><a class="nav-link active" href="#">Booking/Check-in</a></li>
-                <li class="nav-item"><a class="nav-link" href="addcustomer.jsp">Manage Customer</a></li>
-                <li class="nav-item"><a class="nav-link" href="manage.jsp">Manage Hotel</a></li>
+                <li class="nav-item"><a class="nav-link" href="index.jsp">Home</a></li>
+                <li class="nav-item"><a class="nav-link active" href="index.jsp">Booking/Check-in</a></li>
+                <li class="nav-item"><a class="nav-link" href="addcustomer.jsp">Manage Customers</a></li>
+                <li class="nav-item"><a class="nav-link" href="manage.jsp">Add Services</a></li>
+                <li class="nav-item"><a class="nav-link" href="updateservices.jsp">Update Services</a></li>
+                <li class="nav-item"><a class="nav-link" href="removeservices.jsp">Remove Services</a></li>
             </ul>
         </div>
     </div>
