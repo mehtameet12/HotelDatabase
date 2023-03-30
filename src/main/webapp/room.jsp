@@ -74,13 +74,13 @@
     <div class="container" >
         <div class="row" id="row">
             <div class="col-md-12">
-                <div class="" id="card-container">
-                    <div class="body" id="card">
+
+                    <div class="body" id="card" >
                         <% if (rooms.size() == 0) { %>
                         <h3 style="margin-top: 5rem;">No such rooms found, please change your search criteria!</h3>
                         <% } else { %>
                         <div class="table-responsive">
-                            <form action="/HotelDatabase/checkInCustomer" method="post">
+                            <form action="/HotelDatabase/checkInCustomer" method="post" style="box-shadow: 0px 2px 10px rgb(0 0 0 / 0%); max-width: 650px; margin: 15px;">
                                 <table class="table">
                                     <thead>
                                     <tr>
@@ -137,7 +137,7 @@
 
                         <% } %>
                     </div>
-                </div>
+
             </div>
         </div>
     </div>
