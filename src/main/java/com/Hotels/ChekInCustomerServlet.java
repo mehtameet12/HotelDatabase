@@ -24,7 +24,9 @@ public class ChekInCustomerServlet extends HttpServlet {
         String customerName = request.getParameter("customerName");
         String customerAddress = request.getParameter("customerAddress");
         String customerSIN = request.getParameter("customerSIN");
-
+        Date entryDate = Date.valueOf(LocalDate.now());
+        String fromDate = request.getParameter("fromdate");
+        String toDate = request.getParameter("todate");
         String roomId = request.getParameter("selectedRoomId");
         ConnectionDB con = new ConnectionDB();
 
@@ -34,7 +36,7 @@ public class ChekInCustomerServlet extends HttpServlet {
             throw new RuntimeException(e);
         }
         try {
-            con.checkInCustomer(Integer.valueOf(customerSIN), customerName, customerAddress, entryDate, Integer.valueOf(roomId) );
+            con.checkInCustomer(Integer.valueOf(customerSIN), customerName, customerAddress, entryDate, Integer.valueOf(roomId), fromDate, toDate );
             con.close();
             response.sendRedirect("index.jsp");
         } catch (Exception e) {

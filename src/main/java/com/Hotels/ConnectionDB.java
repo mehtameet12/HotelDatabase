@@ -10,7 +10,7 @@ public class ConnectionDB {
     private final String dbName = "DataBF";
     //dbName = "Hotel" for anis
     private final String dbusername = "postgres";
-    private final String dbpassword = "anis0710";
+    private final String dbpassword = "Summer8393";
 
 
     private Connection con = null;
@@ -57,7 +57,7 @@ public class ConnectionDB {
         pstmt.executeUpdate();
     }
 
-    public void checkInCustomer(Integer custid, String name, String address, Date regdate, Integer roomId) throws SQLException {
+    public void checkInCustomer(Integer custid, String name, String address, Date regdate, Integer roomId, String fromDate, String toDate) throws SQLException {
         String sql = "INSERT INTO hotelchainschema.customer (custid, name, address, regdate, roomId) VALUES (?, ?, ?, ?, ?)";
         PreparedStatement pstmt = con.prepareStatement(sql);
         pstmt.setInt(1, custid);
@@ -67,9 +67,11 @@ public class ConnectionDB {
         pstmt.setInt(5, roomId);
         pstmt.executeUpdate();
 
-        String roomUpdateQuery = "UPDATE hotelchainschema.rooms SET status=false WHERE roomid=?";
+        String roomUpdateQuery = "UPDATE hotelchainschema.rooms SET status='Rented', date_from=?, date_to=? WHERE roomid=?";
         PreparedStatement pstmt2 = con.prepareStatement(roomUpdateQuery);
-        pstmt2.setInt(1,roomId);
+        pstmt2.setDate(1,java.sql.Date.valueOf(fromDate));
+        pstmt2.setDate(2,java.sql.Date.valueOf(toDate));
+        pstmt2.setInt(3,roomId);
         pstmt2.executeUpdate();
     }
 
