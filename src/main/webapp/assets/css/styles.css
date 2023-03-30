@@ -38,6 +38,8 @@
     max-width: 280px;
     margin: auto;
     background-color: rgba(18,49,126,0.23);
+    overflow-x: auto;
+    width: 100%;
 }
 
 #card-container {
@@ -46,6 +48,8 @@
     max-width: 850px;
     margin: auto;
     background-color: rgba(18,49,126,0.23);
+    overflow-x: auto;
+    width: 100%;
 }
 
 #paragraph {

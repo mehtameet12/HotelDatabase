@@ -3,6 +3,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="com.Hotels.*" %>
+<%@ page import="com.Hotels.RoomService" %>
 <%@ page import="java.sql.PreparedStatement" %>
 <%@ page import="java.sql.ResultSet" %>
 <%@ page import="java.sql.SQLException" %>
@@ -29,15 +30,21 @@
     // empty session messages
     session.setAttribute("messages", new ArrayList<Message>());
 
-
     //---------------------------------------
 
-    RoomService roomservice = new RoomService();
+    RoomService roomService = new RoomService();
     List<Room> rooms = null;
     try {
-        String hotelChainName = request.getParameter("hotelchainname");
-        String hotelAddress = request.getParameter("address");
-        rooms = roomservice.availableRooms(hotelChainName,hotelAddress );
+        String hotelAddress = (String) request.getAttribute("hotelAddress");
+        String hotelChainName = (String) request.getAttribute("hotelChainName");
+        String startDate = (String) request.getAttribute("fromdate");
+        String endDate = (String) request.getAttribute("todate");
+        String category = (String) request.getAttribute("category");
+        String price = (String) request.getAttribute("price");
+        String roomView = (String) request.getAttribute("roomview");
+        String capacity = (String) request.getAttribute("capacity");
+
+        rooms = roomService.availableRooms(request, hotelAddress, hotelChainName, category, capacity, roomView, price);
     } catch (Exception e) {
         e.printStackTrace();
     }
@@ -53,65 +60,100 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title> Hotel Chain List </title>
+    <title>Book Your Dream Vacation</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="assets/css/styles.css">
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700&amp;display=swap">
+    <link rel="stylesheet" href="assets/css/pikaday.min.css">
 </head>
 
 <body>
-    <jsp:include page="navbar.jsp"/>
-
+<nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-white portfolio-navbar gradient">
+    <div class="container"><a class="navbar-brand logo" href="index.jsp">Pentago</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navbarNav"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link active" href="index.jsp">Home</a></li>
+                <li class="nav-item"><a class="nav-link active" href="index.jsp">Booking/Check-in</a></li>
+                <li class="nav-item"><a class="nav-link active" href="addcustomer.jsp">Add Customer</a></li>
+                <li class="nav-item"><a class="nav-link active" href="manage.jsp">Manage Hotel</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<section class="portfolio-block contact">
     <input type="hidden" name="message" id="message" value='<%=msgField%>' >
-    <div class="container">
+    <div class="container" >
         <div class="row" id="row">
             <div class="col-md-12">
-                <div class="card" id="card-container">
-                    <div class="card-body" id="card">
+                <div class="" id="card-container">
+                    <div class="body" id="card">
                         <% if (rooms.size() == 0) { %>
-                        <h1 style="margin-top: 5rem;">No hotels found!</h1>
+                        <h3 style="margin-top: 5rem;">No such rooms found, please change your search criteria!</h3>
                         <% } else { %>
                         <div class="table-responsive">
-                            <table class="table">
-                                <thead>
-                                <tr>
-                                    <th>Room ID</th>
-                                    <th>Capacity</th>
-                                    <th>Status</th>
-                                    <th>Price</th>
-                                    <th>Room View</th>
-                                    <th>Extension</th>
-                                    <th>Damages</th>
-                                    <th>Amenities</th>
-                                    <th>Hotel ID</th>
-                                    <th></th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <%
-                                for (Room room : rooms) { %>
-                                <tr>
-                                    <td><%= room.getRoomid() %></td>
-                                    <td><%= room.getCapacity() %></td>
-                                    <td><%= room.getStatus() %></td>
-                                    <td><%= room.getPrice() %></td>
-                                    <td><%= room.getRoomview() %></td>
-                                    <td><%= room.getExtension() %></td>
-                                    <td><%= room.getDamages() %></td>
-                                    <td><%= room.getAmenities() %></td>
-                                    <td><%= room.getHotelid() %></td>
-                                </tr>
-                                <% } %>
-                                </tbody>
-                            </table>
+                            <form action="/HotelDatabase/checkInCustomer" method="post">
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th>Select</th>
+                                        <th>Room ID</th>
+                                        <th>Capacity</th>
+                                        <th>Status</th>
+                                        <th>Price</th>
+                                        <th>Room View</th>
+                                        <th>Extension</th>
+                                        <th>Damages</th>
+                                        <th>Amenities</th>
+                                        <th>Hotel ID</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <%
+                                        for (Room room : rooms) {
+                                    %>
+                                    <tr>
+                                        <td><input type="radio" name="selectedRoomId" value="<%= room.getRoomid() %>"></td>
+                                        <td><%= room.getRoomid() %></td>
+                                        <td><%= room.getCapacity() %></td>
+                                        <td><%= room.getStatus() %></td>
+                                        <td><%= room.getPrice() %></td>
+                                        <td><%= room.getRoomview() %></td>
+                                        <td><%= room.getExtension() %></td>
+                                        <td><%= room.getDamages() %></td>
+                                        <td><%= room.getAmenities() %></td>
+                                        <td><%= room.getHotelid() %></td>
+                                    </tr>
+                                    <% } %>
+                                    </tbody>
+                                </table>
+                                <div class="container">
+                                    <h3>Customer Information</h3>
+                                    <div class="mb-3">
+                                        <label class="form-label">Customer Name</label>
+                                        <input class="form-control" type="text" name="customerName">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Address</label>
+                                        <input class="form-control" type="text" name="customerAddress">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">SIN</label>
+                                        <input class="form-control" type="text" name="customerSIN">
+                                    </div>
+                                    <input type="hidden" name="selectedRoomId" id="selectedRoomId">
+                                    <button type="submit" class="btn btn-primary">Check-In</button>
+                                </div>
+                            </form>
                         </div>
+
                         <% } %>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</section>
+
+
 
     <script>
         function setModalFields(row) {
