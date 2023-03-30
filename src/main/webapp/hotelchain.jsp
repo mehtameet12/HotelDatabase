@@ -50,34 +50,6 @@
 </head>
 
 <body>
-<!--
-    <div id="editModal" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Edit Student</h4>
-                </div>
-                <div class="modal-body">
-                    <form id="modal-form">
-                        <div style="text-align: center;">
-                            <input type="text" name="name" id="name" readonly></br>
-                            <input type="text" name="totalhotels" id="totalhotels"></br>
-                            <input type="text" name="address" id="address"></br>
-                            <input type="text" name="email" id="email"></br>
-                            <input type="text" name="phoneno" id="phoneno">
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" form="modal-form" class="btn btn-success">Update</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-
-        </div>
-    </div>
--->
     <jsp:include page="navbar.jsp"/>
 
     <input type="hidden" name="message" id="message" value='<%=msgField%>' >
