@@ -24,7 +24,7 @@ public class ChekInCustomerServlet extends HttpServlet {
         String customerName = request.getParameter("customerName");
         String customerAddress = request.getParameter("customerAddress");
         String customerSIN = request.getParameter("customerSIN");
-        Date entryDate = Date.valueOf(LocalDate.now());
+
         String roomId = request.getParameter("selectedRoomId");
         ConnectionDB con = new ConnectionDB();
 

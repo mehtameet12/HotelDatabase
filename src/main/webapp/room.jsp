@@ -73,7 +73,7 @@
     <input type="hidden" name="message" id="message" value='<%=msgField%>' >
     <div class="container" >
         <div class="row" id="row">
-            <div class="col-md-12">
+            <div class="col-md-12" style="display: flex; align-content: center">
 
                     <div class="body" id="card" >
                         <% if (rooms.size() == 0) { %>
@@ -125,7 +125,9 @@
                                         <label class="form-label">SIN</label>
                                         <input class="form-control" type="text" name="customerSIN">
                                     </div>
-                                    <input type="hidden" name="selectedRoomId" id="selectedRoomId">
+                                    <div class="col-md-6"><label class="form-label" for="fromdate">From</label><input class="form-control" id="fromdate" type="date" name="fromdate"></div>
+                                    <div class="col-md-6 button"><label class="form-label" for="todate">To</label><input class="form-control" id="todate" type="date" name="todate"></div>
+                                    <input type="hidden" name="selectedRoomId" id="selectedRoomId"><br>
                                     <button type="submit" class="btn btn-primary">Check-In</button>
                                 </div>
                             </form>
