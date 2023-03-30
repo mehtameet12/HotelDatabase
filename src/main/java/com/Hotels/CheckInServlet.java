@@ -34,7 +34,7 @@ public class CheckInServlet extends HttpServlet {
         }
 
         try {
-
+            con.inPersonCheckIn(customerID,roomID);
             con.close();
             response.sendRedirect("checkinsuccess.jsp");
         } catch (SQLException e) {
