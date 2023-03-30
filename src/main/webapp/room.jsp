@@ -41,7 +41,7 @@
         String endDate = (String) request.getAttribute("todate");
         String category = (String) request.getAttribute("category");
         String price = (String) request.getAttribute("price");
-        String roomView = (String) request.getAttribute("roomview");
+        String roomView = (String) request.getAttribute("roomView");
         String capacity = (String) request.getAttribute("capacity");
 
         rooms = roomService.availableRooms(request, hotelAddress, hotelChainName, category, capacity, roomView, price);
