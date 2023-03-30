@@ -39,7 +39,8 @@
     <section class="portfolio-block contact">
         <div class="container">
             <div class="heading">
-                <h2>Update Successful!</h2>
+                <h2>Payment Accepted!</h2>
+                <h2>Check-in Successfull!</h2>
             </div>
         </div>
     </section>

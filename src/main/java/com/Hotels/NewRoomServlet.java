@@ -45,6 +45,8 @@ public class NewRoomServlet extends HttpServlet {
             response.sendRedirect("success.jsp");
         } catch (SQLException e) {
             response.sendRedirect("fail.jsp");
+        } catch (Exception f){
+            response.sendRedirect("fail.jsp");
         }
 
 

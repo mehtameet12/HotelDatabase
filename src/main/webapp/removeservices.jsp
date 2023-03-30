@@ -24,11 +24,13 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item"><a class="nav-link" href="index.jsp">Home</a></li>
-                <li class="nav-item"><a class="nav-link active" href="index.jsp">Booking/Check-in</a></li>
+                <li class="nav-item"><a class="nav-link active" href="index.jsp">Booking</a></li>
+                <li class="nav-item"><a class="nav-link" href="checkin.jsp">Check-in</a></li>
                 <li class="nav-item"><a class="nav-link" href="addcustomer.jsp">Manage Customers</a></li>
                 <li class="nav-item"><a class="nav-link" href="manage.jsp">Add Services</a></li>
                 <li class="nav-item"><a class="nav-link" href="updateservices.jsp">Update Services</a></li>
                 <li class="nav-item"><a class="nav-link" href="removeservices.jsp">Remove Services</a></li>
+
 
             </ul>
         </div>
@@ -42,7 +44,7 @@
             </div>
             <form action="/HotelDatabase/removeEmployee" method="post">
 
-                <div class="mb-3"><label class="form-label" >Employee SIN</label><input class="form-control item" type="number" name="sin"></div>
+                <div class="mb-3"><label class="form-label" >Employee SIN</label><input class="form-control item" type="number" name="sin" required></div>
 
                 <div class="mb-3"><button class="btn btn-primary btn-lg d-block w-100" type="submit">Remove Employee</button></div>
             </form>
@@ -55,8 +57,8 @@
                 <h2>Remove Hotel Room</h2>
             </div>
             <form action="/HotelDatabase/removeRoom" method="post">
-                <div class="mb-3"><label class="form-label" >Hotel-ID</label><input class="form-control" type="number" name="hotelid"></div>
-                <div class="mb-3"><label class="form-label" >Room No.</label><input class="form-control item" type="number"  name="roomid"></div>
+                <div class="mb-3"><label class="form-label" >Hotel-ID</label><input class="form-control" type="number" name="hotelid" required></div>
+                <div class="mb-3"><label class="form-label" >Room No.</label><input class="form-control item" type="number"  name="roomid" required></div>
                 <div class="mb-3"><button class="btn btn-primary btn-lg d-block w-100" type="submit">Remove Room</button></div>
             </form>
         </div>
@@ -65,9 +67,11 @@
         <div class="container">
             <div class="heading">
                 <h2>Remove Hotel</h2>
+                <h5 style="color:red; ">CAUTION!<br> Removing a Hotel will remove all the data of<br> Employees And Rooms of the Hotel</h5>
             </div>
             <form action="/HotelDatabase/removeHotel" method="post">
-                <div class="mb-3"><label class="form-label" >Hotel-ID</label><input class="form-control" type="number" name="hotelid"></div>
+                <div class="mb-3"><label class="form-label" >Hotel-ID</label><input class="form-control" type="number" name="hotelid" required></div>
+
                 <div class="mb-3"><button class="btn btn-primary btn-lg d-block w-100" type="submit">Remove Hotel</button></div>
             </form>
         </div>

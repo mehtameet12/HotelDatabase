@@ -24,11 +24,13 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item"><a class="nav-link" href="index.jsp">Home</a></li>
-                <li class="nav-item"><a class="nav-link active" href="index.jsp">Booking/Check-in</a></li>
+                <li class="nav-item"><a class="nav-link active" href="index.jsp">Booking</a></li>
+                <li class="nav-item"><a class="nav-link" href="checkin.jsp">Check-in</a></li>
                 <li class="nav-item"><a class="nav-link" href="addcustomer.jsp">Manage Customers</a></li>
                 <li class="nav-item"><a class="nav-link" href="manage.jsp">Add Services</a></li>
                 <li class="nav-item"><a class="nav-link" href="updateservices.jsp">Update Services</a></li>
                 <li class="nav-item"><a class="nav-link" href="removeservices.jsp">Remove Services</a></li>
+
 
             </ul>
         </div>
@@ -41,9 +43,9 @@
                 <h2>Add Customer</h2>
             </div>
             <form action="/HotelDatabase/customer" method="post">
-                <div class="mb-3"><label class="form-label" >Customer Name</label><input class="form-control item" type="text" name="name"></div>
-                <div class="mb-3"><label class="form-label" >Address</label><input class="form-control item" type="text" name="address"></div>
-                <div class="mb-3"><label class="form-label" >SIN</label><input class="form-control item" type="tel" name="sin"></div>
+                <div class="mb-3"><label class="form-label" >Customer Name</label><input class="form-control item" type="text" name="name" required></div>
+                <div class="mb-3"><label class="form-label" >Address</label><input class="form-control item" type="text" name="address" required></div>
+                <div class="mb-3"><label class="form-label" >SIN</label><input class="form-control item" type="tel" name="sin" required></div>
 
                 <div class="mb-3"><button class="btn btn-primary btn-lg d-block w-100" type="submit">Add Customer</button></div>
             </form>
@@ -56,7 +58,7 @@
                 <h2>Update Customer</h2>
             </div>
             <form action="/HotelDatabase/updateCustomer" method="post">
-                <div class="mb-3"><label class="form-label" >Customer SIN</label><input class="form-control item" type="tel" name="custid"></div>
+                <div class="mb-3"><label class="form-label" >Customer SIN</label><input class="form-control item" type="tel" name="custid" required></div>
                 <div class="mb-3"><label class="form-label" >Customer Name</label><input class="form-control item" type="text" name="name"></div>
                 <div class="mb-3"><label class="form-label" >Address</label><input class="form-control item" type="text" name="address"></div>
                 <div class="mb-3"><button class="btn btn-primary btn-lg d-block w-100" type="submit">Update Customer</button></div>
@@ -69,7 +71,7 @@
                 <h2>Remove Customer</h2>
             </div>
             <form action="/HotelDatabase/removeCustomer" method="post">
-                <div class="mb-3"><label class="form-label" >Customer SIN</label><input class="form-control item" type="number" name="custid"></div>
+                <div class="mb-3"><label class="form-label" >Customer SIN</label><input class="form-control item" type="number" name="custid" required></div>
                 <div class="mb-3"><button class="btn btn-primary btn-lg d-block w-100" type="submit">Remove Customer</button></div>
             </form>
         </div>
