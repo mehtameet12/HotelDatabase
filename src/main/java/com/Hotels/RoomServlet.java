@@ -62,6 +62,7 @@ public class RoomServlet extends HttpServlet {
         request.setAttribute("price", price);
         request.setAttribute("capacity", capacity);
 
+
         // forward the request to the room.jsp file
         RequestDispatcher dispatcher = request.getRequestDispatcher("room.jsp");
         dispatcher.forward(request, response);

@@ -92,6 +92,7 @@ public class RoomService {
             query += "AND r.price <= " + Integer.parseInt(roomPrice) + " ";
         }
 
+
         // connection object
         ConnectionDB db = new ConnectionDB();
 
