@@ -87,13 +87,11 @@
                                         <th>Select</th>
                                         <th>Room ID</th>
                                         <th>Capacity</th>
-                                        <th>Status</th>
                                         <th>Price</th>
                                         <th>Room View</th>
                                         <th>Extension</th>
                                         <th>Damages</th>
                                         <th>Amenities</th>
-                                        <th>Hotel ID</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -104,13 +102,11 @@
                                         <td><input type="radio" name="selectedRoomId" value="<%= room.getRoomid() %>"></td>
                                         <td><%= room.getRoomid() %></td>
                                         <td><%= room.getCapacity() %></td>
-                                        <td><%= room.getStatus() %></td>
                                         <td><%= room.getPrice() %></td>
                                         <td><%= room.getRoomview() %></td>
                                         <td><%= room.getExtension() %></td>
                                         <td><%= room.getDamages() %></td>
                                         <td><%= room.getAmenities() %></td>
-                                        <td><%= room.getHotelid() %></td>
                                     </tr>
                                     <% } %>
                                     </tbody>
