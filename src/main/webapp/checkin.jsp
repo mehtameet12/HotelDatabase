@@ -62,6 +62,7 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="mb-3"><label class="form-label" >Amount ($CAD)</label><input class="form-control item" type="number" name="amount" required></div>
                         <button class="btn btn-primary btn-lg d-block w-100" id="show-btn"  type="submit" >Check-in</button>
                     </form>
                 </div>

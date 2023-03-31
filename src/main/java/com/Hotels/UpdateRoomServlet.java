@@ -23,11 +23,11 @@ public class UpdateRoomServlet extends HttpServlet {
         Integer roomID = Integer.valueOf(request.getParameter("roomid"));
         Integer capacity = Integer.valueOf(request.getParameter("capacity"));
         String roomView = request.getParameter("roomview");
-        Integer price = Integer.valueOf(request.getParameter("price"));
+        String price = (request.getParameter("price"));
         String[] amenities = (request.getParameter("amenities")).split(",");
         Boolean extension = Boolean.getBoolean(request.getParameter("extension"));
         String damages = request.getParameter("damages");
-        Boolean status = Boolean.getBoolean(request.getParameter("status"));
+        String status = (request.getParameter("status"));
 
         ConnectionDB con = new ConnectionDB();
 

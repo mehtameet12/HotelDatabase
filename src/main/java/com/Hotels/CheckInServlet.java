@@ -25,6 +25,7 @@ public class CheckInServlet extends HttpServlet {
         Integer roomID = Integer.valueOf(request.getParameter("roomid"));
 
 
+
         ConnectionDB con = new ConnectionDB();
 
         try {

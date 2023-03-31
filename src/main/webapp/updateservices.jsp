@@ -81,8 +81,9 @@
                 </select></div>
                 <div class="mb-3"><label class="form-label" >Room Availability</label><select class="form-select"name="status" >
                     <optgroup label="Room available">
-                        <option value="true" selected="">Yes</option>
-                        <option value="false">No</option>
+                        <option value="Booked" selected="">Booked</option>
+                        <option value="Available">Available</option>
+                        <option value="Rented">Rented</option>
                     </optgroup>
                 </select></div>
                 <div class="mb-3"><label class="form-label" >Problems/Damages</label><input class="form-control item" type="text" name="damages" id="subject-13" style="height: 75px;"></div>
@@ -97,15 +98,6 @@
             </div>
             <form style="margin-top: 10px;" action="/HotelDatabase/updateHotel" method="post">
                 <div class="mb-3"><label class="form-label" >Hotel-ID</label><input class="form-control" type="number" name="hotelid" required></div>
-                <div class="mb-3"><label class="form-label">Select Hotel Chain</label><select class="form-select" id="subject-7" name ="name">
-                    <optgroup label="Hotel Chains">
-                        <option value="Mariott" selected="">Mariott</option>
-                        <option value="Hayat">Hayat</option>
-                        <option value="Hilton">Hilton</option>
-                        <option value="ResidenceInn">Residence Inn</option>
-                        <option value="4Seasons">4 Seasons</option>
-                    </optgroup>
-                </select></div>
                 <div class="mb-3"><label class="form-label" >Location</label><input class="form-control item" type="text" id="subject-3" min="8" name="address"></div>
                 <div class="mb-3"><label class="form-label" >Hotel Category</label><select class="form-select" id="subject-12" name="category">
                     <optgroup label="Star Hotels">

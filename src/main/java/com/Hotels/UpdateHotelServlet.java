@@ -20,10 +20,9 @@ public class UpdateHotelServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Integer hotelID = Integer.valueOf(request.getParameter("hotelid"));
-        String hotelChainName = request.getParameter("name");
         Integer hotelCategory = Integer.valueOf(request.getParameter("category"));
         String hotelAddress = request.getParameter("address");
-        Integer totalRooms = Integer.valueOf(request.getParameter("totalrooms"));
+        String totalRooms = (request.getParameter("totalrooms"));
 
 
         ConnectionDB con = new ConnectionDB();
@@ -35,11 +34,12 @@ public class UpdateHotelServlet extends HttpServlet {
         }
 
         try {
-            con.updateHotel(hotelCategory,hotelAddress, totalRooms,hotelChainName, hotelID);
+            con.updateHotel(hotelCategory,hotelAddress, totalRooms, hotelID);
             con.close();
             response.sendRedirect("success.jsp");
         } catch (SQLException e) {
             response.sendRedirect("fail.jsp");
+
         } catch (Exception f){
             response.sendRedirect("fail.jsp");
         }

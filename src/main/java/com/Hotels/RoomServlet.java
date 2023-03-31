@@ -38,7 +38,7 @@ public class RoomServlet extends HttpServlet {
         roomView = request.getParameter("roomview");
         capacity = request.getParameter("capacity");
 
-
+        /*
         System.out.println(hotelChainName);
         System.out.println(hotelAddress);
         System.out.println(startDate);
@@ -47,6 +47,8 @@ public class RoomServlet extends HttpServlet {
         System.out.println(price);
         System.out.println(roomView);
         System.out.println(capacity);
+
+         */
         ConnectionDB con = new ConnectionDB();
         try {
             con.getConnection();

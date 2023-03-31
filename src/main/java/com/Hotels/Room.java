@@ -73,8 +73,10 @@ public class Room {
         this.roomview = roomview;
     }
 
-    public Boolean getExtension() {
-        return extension;
+    public String getExtension() {
+        if (extension == true){ return ("Extension possible");}
+        else {return  ("Extension not possible");}
+
     }
 
     public void setExtension(Boolean extension) {
@@ -82,7 +84,9 @@ public class Room {
     }
 
     public String getDamages() {
-        return damages;
+        if( damages == null){ return "No Damages" ;}
+        else { return damages; }
+
     }
 
     public void setDamages(String damages) {

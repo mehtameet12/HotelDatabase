@@ -26,6 +26,7 @@ public class UpdateEmployeeServlet extends HttpServlet {
         String employeeAddress = request.getParameter("address");
         String employeeRole = request.getParameter("emprole");
         Integer hotelId = Integer.valueOf(request.getParameter("hotelid"));
+
         ConnectionDB con = new ConnectionDB();
         try {
             con.getConnection();

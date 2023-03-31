@@ -87,7 +87,7 @@ public class ConnectionDB {
         PreparedStatement pstmt2 = con.prepareStatement(sql);
         pstmt2.setInt(1, roomID);
         pstmt2.setInt(2, customerID);
-        pstmt.executeUpdate();
+        pstmt2.executeUpdate();
 
 
     }
@@ -121,33 +121,107 @@ public class ConnectionDB {
     }
 
     public void updateCustomer(int custId, String name, String address, Date entryDate) throws SQLException {
-        String sql = "UPDATE hotelchainschema.customer SET name=?, address=?, regdate=? WHERE custid=?";
-        PreparedStatement pstmt = con.prepareStatement(sql);
-        pstmt.setString(1, name);
-        pstmt.setString(2, address);
-        pstmt.setDate(3, entryDate);
-        pstmt.setInt(4, custId);
-        pstmt.executeUpdate();
+        if (name == "" && address != ""){
+            String sql = "UPDATE hotelchainschema.customer SET address=? WHERE custid=?";
+            PreparedStatement pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, address);
+            pstmt.setInt(2, custId);
+            pstmt.executeUpdate();
+        } else if (address == "" && name != "") {
+            String sql = "UPDATE hotelchainschema.customer SET name=? WHERE custid=?";
+            PreparedStatement pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, name);
+            pstmt.setInt(2, custId);
+            pstmt.executeUpdate();
+
+        } else if(name =="" && address == ""){
+            return;
+        }
+        else {
+            String sql = "UPDATE hotelchainschema.customer SET name=?, address=? WHERE custid=?";
+            PreparedStatement pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, name);
+            pstmt.setString(2, address);
+            pstmt.setInt(3, custId);
+            pstmt.executeUpdate();
+        }
     }
 
     public void updateEmployee(Integer empId, String employeeName, String employeeAddress, String employeeRole, Integer hotelId) throws SQLException {
-        String sql = "UPDATE hotelchainschema.employee SET name=?, address=?, emprole=?, hotelid=? WHERE empid=?";
-        PreparedStatement pstmt = con.prepareStatement(sql);
-        pstmt.setString(1, employeeName);
-        pstmt.setString(2, employeeAddress);
-        pstmt.setString(3, employeeRole);
-        pstmt.setInt(4, hotelId);
-        pstmt.setInt(5, empId);
-        pstmt.executeUpdate();
+
+        String getSQL = "SELECT * FROM hotelchainschema.employee WHERE empid=?";
+        PreparedStatement st = con.prepareStatement(getSQL);
+        st.setInt(1, empId);
+        ResultSet rs =  st.executeQuery();
+        String newName = "", newAddress = "", newRole = "";
+        Integer newHotel = 0;
+        while (rs.next()){
+            newName = rs.getString(2);
+            newAddress = rs.getString(3);
+            newRole = rs.getString(4);
+            newHotel = rs.getInt(5);
+
+        }
+        if (employeeName == ""){
+            employeeName = newName;
+        }
+        if (employeeAddress == ""){
+            employeeAddress = newAddress;
+        }
+        if( employeeRole == ""){
+            employeeRole = newRole;
+        }
+        if (hotelId == null){
+            hotelId = newHotel;
+        }
+
+            String sql = "UPDATE hotelchainschema.employee SET name=?, address=?, emprole=?, hotelid=? WHERE empid=?";
+            PreparedStatement pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, employeeName);
+            pstmt.setString(2, employeeAddress);
+            pstmt.setString(3, employeeRole);
+            pstmt.setInt(4, hotelId);
+            pstmt.setInt(5, empId);
+            pstmt.executeUpdate();
+
+
+
+
     }
 
-    public void updateRoom(Integer roomid, Integer capacity, Boolean status, Integer price, String roomview, Boolean extension, String damages, String[] amenitiesArr, Integer hotelid) throws SQLException {
+    public void updateRoom(Integer roomid, Integer capacity, String status, String price, String roomview, Boolean extension, String damages, String[] amenitiesArr, Integer hotelid) throws SQLException {
         Array amenities = con.createArrayOf("VARCHAR", amenitiesArr);
+        String getSQL = "SELECT * FROM hotelchainschema.rooms WHERE roomid=?";
+        PreparedStatement st = con.prepareStatement(getSQL);
+        st.setInt(1, roomid);
+        ResultSet rs =  st.executeQuery();
+        String  newDamages = "";
+        Integer  oldPrice = 0;
+        Array oldAmenities = null;
+
+        while (rs.next()){
+
+            oldPrice = rs.getInt(4);
+            newDamages = rs.getString(7);
+            oldAmenities = rs.getArray(8);
+
+
+        }
+
+        Integer newPrice = 0;
+
+        if(price == ""){ newPrice = oldPrice;} else {newPrice = Integer.valueOf(price);}
+        if(damages == ""){damages = newDamages;}
+        if(amenitiesArr.length == 0 ){amenities = oldAmenities;}
+
+
+
+
         String sql = "UPDATE hotelchainschema.rooms SET capacity=?, status=?, price=?, roomview=?, extension=?, damages=? , amenities=? WHERE roomid=? AND hotelid=? ";
         PreparedStatement pstmt = con.prepareStatement(sql);
         pstmt.setInt(1, capacity);
-        pstmt.setBoolean(2, status);
-        pstmt.setInt(3, price);
+        pstmt.setString(2, status);
+        pstmt.setInt(3, newPrice);
         pstmt.setString(4, roomview);
         pstmt.setBoolean(5, extension);
         pstmt.setString(6, damages);
@@ -157,14 +231,33 @@ public class ConnectionDB {
         pstmt.executeUpdate();
     }
 
-    public void updateHotel(Integer hotelCategory, String hotelAddress, Integer totalRooms, String hotelChainName, Integer hotelID) throws SQLException {
-        String sql = "UPDATE hotelchainschema.hotels SET category=?, address=?, totalrooms=?, name=? WHERE hotelid=?";
+    public void updateHotel(Integer hotelCategory, String hotelAddress, String totalRooms,  Integer hotelID) throws SQLException {
+        String getSQL = "SELECT * FROM hotelchainschema.hotels WHERE hotelid=?";
+        PreparedStatement st = con.prepareStatement(getSQL);
+        st.setInt(1, hotelID);
+        ResultSet rs =  st.executeQuery();
+        String oldAddress = "";
+        Integer   oldRooms = 0;
+        Integer newRooms = 0;
+        while (rs.next()){
+            oldAddress = rs.getString(3);
+            oldRooms = rs.getInt(4);
+
+
+        }
+
+        if(hotelAddress == ""){hotelAddress = oldAddress;}
+        if(totalRooms == ""){newRooms = oldRooms;} else { newRooms = Integer.valueOf(totalRooms);}
+
+
+
+
+        String sql = "UPDATE hotelchainschema.hotels SET  category=?, address=?, totalrooms=? WHERE hotelid=?";
         PreparedStatement pstmt = con.prepareStatement(sql);
         pstmt.setInt(1, hotelCategory);
         pstmt.setString(2, hotelAddress);
-        pstmt.setInt(3, totalRooms);
-        pstmt.setString(4, hotelChainName);
-        pstmt.setInt(5, hotelID);
+        pstmt.setInt(3, newRooms);
+        pstmt.setInt(4, hotelID);
         pstmt.executeUpdate();
     }
 
@@ -183,25 +276,35 @@ public class ConnectionDB {
         pstmt.executeUpdate();
     }
     public void removeHotel(Integer hotelID) throws SQLException {
-        String sql2 = "DELETE FROM hotelchainschema.rooms WHERE hotelid=?";
-        String sql3 = "DELETE FROM hotelchainschema.employee WHERE hotelid=?";
-        String sql4 = "DELETE FROM hotelchainschema.manager WHERE hotelid=?";
+        try{
+            String sql2 = "DELETE FROM hotelchainschema.rooms WHERE hotelid=?";
+            String sql3 = "DELETE FROM hotelchainschema.employee WHERE hotelid=?";
+            String sql4 = "DELETE FROM hotelchainschema.manager WHERE hotelid=?";
 
-        PreparedStatement pstmt2 = con.prepareStatement(sql2);
-        PreparedStatement pstmt3 = con.prepareStatement(sql3);
-        PreparedStatement pstmt4 = con.prepareStatement(sql4);
-        pstmt2.setInt(1,hotelID);
-        pstmt3.setInt(1,hotelID);
-        pstmt2.executeUpdate();
-        pstmt3.executeUpdate();
-        pstmt4.executeUpdate();
-        String sql = "DELETE FROM hotelchainschema.hotels WHERE hotelid=? ";
+            PreparedStatement pstmt2 = con.prepareStatement(sql2);
+            PreparedStatement pstmt3 = con.prepareStatement(sql3);
+            PreparedStatement pstmt4 = con.prepareStatement(sql4);
+            pstmt2.setInt(1,hotelID);
+            pstmt3.setInt(1,hotelID);
+            pstmt4.setInt(1,hotelID);
+            pstmt2.executeUpdate();
+            pstmt3.executeUpdate();
+            pstmt4.executeUpdate();
 
-        PreparedStatement pstmt = con.prepareStatement(sql);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        finally {
+            String sql = "DELETE FROM hotelchainschema.hotels WHERE hotelid=? ";
 
-        pstmt.setInt(1,hotelID);
+            PreparedStatement pstmt = con.prepareStatement(sql);
 
-        pstmt.executeUpdate();
+            pstmt.setInt(1,hotelID);
+
+            pstmt.executeUpdate();
+        }
+
+
 
     }
 

@@ -84,14 +84,14 @@
                         <h3 style="margin-top: 5rem;">No such rooms found, please change your search criteria!</h3>
                         <% } else { %>
                         <div class="table-responsive" style="box-sizing: content-box">
-                            <form action="/HotelDatabase/checkInCustomer" method="post" style="box-shadow: 0px 2px 10px rgb(0 0 0 / 0%); max-width: 650px; margin: 15px; box-sizing: content-box">
-                                <table class="table">
+                            <form action="/HotelDatabase/checkInCustomer" method="post" style="box-shadow: 0px 2px 10px rgb(0 0 0 / 0%); max-width: 1000px; margin: 15px; box-sizing: content-box">
+                                <table class="table" >
                                     <thead>
                                     <tr>
                                         <th>Select</th>
                                         <th>Room ID</th>
                                         <th>Capacity</th>
-                                        <th>Price</th>
+                                        <th>Price ($CAD)</th>
                                         <th>Room View</th>
                                         <th>Extension</th>
                                         <th>Damages</th>
@@ -119,7 +119,7 @@
                                 <h6>Total Rooms in the Area: <%= totalRooms %></h6>
                                 <h6>Total Capacity of all Rooms: <%= totalCap %></h6>
                                 <br>
-                                <div class="container">
+                                <div class="container" style="max-width: 650px">
                                     <h3>Customer Information</h3>
                                     <div class="mb-3">
                                         <label class="form-label">Customer Name</label>
