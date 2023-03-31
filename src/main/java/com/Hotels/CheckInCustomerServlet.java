@@ -25,11 +25,11 @@ public class CheckInCustomerServlet extends HttpServlet {
         String customerAddress = request.getParameter("customerAddress");
         String customerSIN = request.getParameter("customerSIN");
         Date entryDate = Date.valueOf(LocalDate.now());
-<<<<<<< Updated upstream:src/main/java/com/Hotels/ChekInCustomerServlet.java
+
         String fromDate = request.getParameter("fromdate");
         String toDate = request.getParameter("todate");
-=======
->>>>>>> Stashed changes:src/main/java/com/Hotels/CheckInCustomerServlet.java
+
+
         String roomId = request.getParameter("selectedRoomId");
         ConnectionDB con = new ConnectionDB();
 

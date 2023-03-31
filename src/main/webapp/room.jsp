@@ -77,14 +77,14 @@
     <input type="hidden" name="message" id="message" value='<%=msgField%>' >
     <div class="container" >
         <div class="row" id="row">
-            <div class="col-md-12" style="display: flex; align-content: center">
+            <div class="col-md-12" style="display: flex; justify-content: center">
 
-                    <div class="body" id="card" >
+                    <div class="body" id="card" style="box-sizing: content-box">
                         <% if (rooms.size() == 0) { %>
                         <h3 style="margin-top: 5rem;">No such rooms found, please change your search criteria!</h3>
                         <% } else { %>
-                        <div class="table-responsive">
-                            <form action="/HotelDatabase/checkInCustomer" method="post" style="box-shadow: 0px 2px 10px rgb(0 0 0 / 0%); max-width: 650px; margin: 15px;">
+                        <div class="table-responsive" style="box-sizing: content-box">
+                            <form action="/HotelDatabase/checkInCustomer" method="post" style="box-shadow: 0px 2px 10px rgb(0 0 0 / 0%); max-width: 650px; margin: 15px; box-sizing: content-box">
                                 <table class="table">
                                     <thead>
                                     <tr>
@@ -133,8 +133,12 @@
                                         <label class="form-label">SIN</label>
                                         <input class="form-control" type="text" name="customerSIN">
                                     </div>
-                                    <div class="col-md-6"><label class="form-label" for="fromdate">From</label><input class="form-control" id="fromdate" type="date" name="fromdate"></div>
-                                    <div class="col-md-6 button"><label class="form-label" for="todate">To</label><input class="form-control" id="todate" type="date" name="todate"></div>
+                                    <div class="mb-3">
+                                        <div class="row">
+                                            <div class="col-md-6"><label class="form-label" for="fromdate">From</label><input class="form-control" id="fromdate" type="date" name="fromdate"></div>
+                                            <div class="col-md-6 button"><label class="form-label" for="todate">To</label><input class="form-control" id="todate" type="date" name="todate"></div>
+                                        </div>
+                                    </div>
                                     <input type="hidden" name="selectedRoomId" id="selectedRoomId"><br>
                                     <button type="submit" class="btn btn-primary">Check-In</button>
                                 </div>
