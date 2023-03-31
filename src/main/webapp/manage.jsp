@@ -81,7 +81,7 @@
                         <option value="Marriott" selected="">Marriott</option>
                         <option value="Hayat">Hayat</option>
                         <option value="Hilton">Hilton</option>
-                        <option value="ResidenceInn">Residence Inn</option>
+                        <option value="ResidenceInn">ResidenceInn</option>
                         <option value="4Seasons">4 Seasons</option>
                     </optgroup>
                 </select></div>

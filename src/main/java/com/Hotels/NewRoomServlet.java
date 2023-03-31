@@ -27,7 +27,7 @@ public class NewRoomServlet extends HttpServlet {
         String[] amenities = (request.getParameter("amenities")).split(",");
         Boolean extension = Boolean.getBoolean(request.getParameter("extension"));
         String damages = request.getParameter("damages");
-        Boolean status = false;
+        String status = "Available";
 
 
 

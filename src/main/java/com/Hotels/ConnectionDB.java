@@ -93,14 +93,14 @@ public class ConnectionDB {
     }
 
 
-    public void insertRoom(Integer roomid, Integer capacity, Boolean status, Integer price, String roomview, Boolean extension, String damages, String[] amenitiesArr, Integer hotelid) throws SQLException {
+    public void insertRoom(Integer roomid, Integer capacity, String status, Integer price, String roomview, Boolean extension, String damages, String[] amenitiesArr, Integer hotelid) throws SQLException {
         Array amenities = con.createArrayOf("VARCHAR", amenitiesArr);
 
         String sql = "INSERT INTO hotelchainschema.rooms (roomid, capacity, status, price, roomview, extension, damages, amenities , hotelid) VALUES (?, ?, ?, ?,?, ?, ?, ?,? )";
         PreparedStatement pstmt = con.prepareStatement(sql);
         pstmt.setInt(1, roomid);
         pstmt.setInt(2, capacity);
-        pstmt.setBoolean(3, status);
+        pstmt.setString(3, status);
         pstmt.setInt(4, price);
         pstmt.setString(5, roomview);
         pstmt.setBoolean(6, extension);
@@ -118,6 +118,11 @@ public class ConnectionDB {
         pstmt.setInt(3, totalrooms);
         pstmt.setString(4, name);
         pstmt.executeUpdate();
+
+        String getSQL = "UPDATE hotelchainschema.hotelchain SET totalhotels = totalhotels + 1 where name=?";
+        PreparedStatement st = con.prepareStatement(getSQL);
+        st.setString(1, name);
+        st.executeUpdate();
     }
 
     public void updateCustomer(int custId, String name, String address, Date entryDate) throws SQLException {
@@ -295,6 +300,15 @@ public class ConnectionDB {
             e.printStackTrace();
         }
         finally {
+            String getSQL = "SELECT * FROM hotelchainschema.hotels WHERE hotelid=?";
+            PreparedStatement st = con.prepareStatement(getSQL);
+            st.setInt(1, hotelID);
+            ResultSet rs =  st.executeQuery();
+            String name ="";
+            while (rs.next()){
+                name = rs.getString(5);
+
+            }
             String sql = "DELETE FROM hotelchainschema.hotels WHERE hotelid=? ";
 
             PreparedStatement pstmt = con.prepareStatement(sql);
@@ -302,6 +316,14 @@ public class ConnectionDB {
             pstmt.setInt(1,hotelID);
 
             pstmt.executeUpdate();
+
+
+
+
+            String updateSQL = "UPDATE hotelchainschema.hotelchain SET totalhotels = totalhotels - 1 where name=?";
+            PreparedStatement st2 = con.prepareStatement(updateSQL);
+            st2.setString(1, name);
+            st2.executeUpdate();
         }
 
 
