@@ -1,6 +1,4 @@
 
-![horizontal line](Aspose.Words.fcb84065-4344-4d49-9547-5f532e2dc8bc.001.png)
-
 <a name="_2mcsahkpepwj"></a>**Hotel Database Management System**
 
 
