@@ -129,15 +129,14 @@ Anybody can install and use our application with two ways, either by downloading
 `    `PRIMARY KEY (hotelid, roomid, dates) );
 <a name="_5gqt6a5yy27g"></a>**
 
-==============================
+
 **UPDATED DATABASE SCHEMA**
+
 ![](Aspose.Words.fcb84065-4344-4d49-9547-5f532e2dc8bc.002.png)
 
 
-
-
-
 **INDEXES**
+
 select count(\*) from rooms where status='Available' ;
 
 Before index:80msec
