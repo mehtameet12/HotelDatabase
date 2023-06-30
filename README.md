@@ -1,5 +1,5 @@
 
-<a name="_2mcsahkpepwj"></a>**Hotel Database Management System**
+# <a name="_14mpx6a8znb7"></a>**Hotel Database Management System**
 
 
 **Introduction**
@@ -7,7 +7,9 @@
 The project aims to develop an application for five major hotel chains operating in North America. The application will allow customers to view real-time availability and book rooms in hotels of these chains. The application provides information about hotel chains, hotels, rooms, customers, and employees. The hotels are categorized into 1-star to 5-star, and the rooms have information about their amenities, capacity, price, view, extension, and any problems/damages. Customers can search and book rooms online, and their room booking is transformed into renting upon check-in. The employees who check-in the customers are responsible for this transformation. 
 
 The project has an ER diagram, a relational database schema, defining necessary constraints such as primary keys, referential integrity constraints, domain constraints, and user-defined constraints. The web application is also capable of inserting data into the database, creating necessary SQL modifications and triggers, designing, and implementing a user interface for searching and booking rooms, and updating customer, employee, hotel, and room information.
-# <a name="_14mpx6a8znb7"></a>**Languages and DBMS Used**  
+
+**Languages and DBMS Used**  
+
 We have used several programming languages in this project to achieve our goal. We used SQL queries to populate our database and meet the specific data constraints we were provided. A combination of Java and HTML was used to develop and link the application to our database.  We then used CSS to design it and give it a more professional look. We used PostgreSQL as a DBMS to make our application and Apache Tomcat for server communications. We had to change a lot of the versions of these technologies to make everything work, here is the final list of everything with their version:
 
 - Maven Compiler 17
@@ -18,7 +20,9 @@ We have used several programming languages in this project to achieve our goal. 
 - Bootstrap 5
 - Github
 - pgAdmin4
-# <a name="_oymnw3nlvwib"></a>**Steps to Install Application**  
+
+**Steps to Install Application**  
+
 Anybody can install and use our application with two ways, either by downloading the files from the provided zip folder or cloning our GitHub repository from the main branch <https://github.com/mehtameet12/HotelDatabase.git> and then following these steps . 
 
 1. You will need Apache Tomcat 10.1.7 , IntelliJ IDEA with Maven & Tomcat plugin, pgAdmin4 installed to configure the webapp. 
@@ -28,7 +32,9 @@ Anybody can install and use our application with two ways, either by downloading
 1. Connect the database to the IntelliJ project by configuring the Tomcat server in the IDE to your Tomcat location on your drive. 
 1. In the Project file ConnectionDB.java change the user name and password to your pgAdmin profile.
 1. Run the application and you should be able to access the web application at the address <http://localhost:8080/HotelDatabase/> , from here on you can access all the functionalities of the app. 
-# <a name="_c5rpsdy8g2ak"></a>**DDL’s**
+
+**DDL’s**
+
 - CREATE SCHEMA HotelChain;
 - CREATE TABLE rooms (
 
@@ -124,14 +130,14 @@ Anybody can install and use our application with two ways, either by downloading
 <a name="_5gqt6a5yy27g"></a>**
 
 ==============================
-# <a name="_9kt83lx9l7l1"></a>**UPDATED DATABASE SCHEMA**
+**UPDATED DATABASE SCHEMA**
 ![](Aspose.Words.fcb84065-4344-4d49-9547-5f532e2dc8bc.002.png)
 
 
 
 
 
-# <a name="_7q1ipxfj4hov"></a>**INDEXES**
+**INDEXES**
 select count(\*) from rooms where status='Available' ;
 
 Before index:80msec
