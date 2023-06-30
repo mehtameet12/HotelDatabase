@@ -132,7 +132,7 @@ Anybody can install and use our application with two ways, either by downloading
 
 **UPDATED DATABASE SCHEMA**
 
-![](Aspose.Words.fcb84065-4344-4d49-9547-5f532e2dc8bc.002.png)
+![](Photos/Aspose.Words.fcb84065-4344-4d49-9547-5f532e2dc8bc.002.png)
 
 
 **INDEXES**
